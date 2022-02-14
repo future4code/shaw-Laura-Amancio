@@ -23,13 +23,13 @@
     // d) Foi impresso indefinido para os dois, uma vez que o console não tem um valor para atribuir, logo fica indefinido.
 
     //e
-    let qualNome = prompt ("Qual seu nome?")
-    let qualIdade = prompt ("Qual sua idade?")
-    console.log (typeof qualNome, typeof qualIdade)
+    nome = prompt ("Qual seu nome?")
+    idade = prompt ("Qual sua idade?")
+    console.log (typeof nome, typeof idade)
     //f) Ambos aparecem como String, o console, mesmo eu colocando um número na idade, ele ainda entende como String por não ter uma especificação
 
     //g)
-    console.log ("Olá", qualNome ,", você tem", qualIdade, "anos.")
+    console.log ("Olá", nome ,", você tem", idade, "anos.")
 
 //2)a-
     let corCamiseta = prompt ("Sua camiseta é preta?")

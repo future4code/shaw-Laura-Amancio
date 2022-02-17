@@ -30,48 +30,86 @@
 
 // 1)
 // a)
-// function minhaInfo() {
-//     console.log("Meu nome é Laura")
-// }
-// minhaInfo() 
+function minhaInfo() {
+    console.log("Eu sou a Laura, tenho 25 anos, moro em Jundiaí e sou estudante")
+}
+minhaInfo() 
 
 // b)
-// let nomeUsuario = prompt("Qual seu nome?")
-// let idadeUsuario = prompt("Qual sua idade?")
-// let cidadeUsuario = prompt("Qual sua cidade?")
-// let profissaoUsuario = prompt("Qual sua profissão?")
+let nomeUsuario = prompt("Qual seu nome?")
+let idadeUsuario = prompt("Qual sua idade?")
+let cidadeUsuario = prompt("Qual sua cidade?")
+let profissaoUsuario = prompt("Qual sua profissão?")
 
-// function unificar (nome, idade, cidade, profissao){
-//     const fraseConcat = `Eu sou ${nome} tenho ${idade} anos moro em ${cidade} e sou ${profissao}`
-//     return fraseConcat
-// }
+function unificar (nome, idade, cidade, profissao){
+    const fraseConcat = `Eu sou ${nome}, tenho ${idade} anos, moro em ${cidade} e sou ${profissao}`
+    return fraseConcat
+}
 
-// console.log(unificar(nomeUsuario, idadeUsuario, cidadeUsuario, profissaoUsuario))
+console.log(unificar(nomeUsuario, idadeUsuario, cidadeUsuario, profissaoUsuario))
 
 // 2)
 // a)
-// function soma (numero1, numero2){
-//     let somaNumeros = numero1 + numero2
-//     return somaNumeros
-// }
+function soma (numero1, numero2){
+    let somaNumeros = numero1 + numero2
+    return somaNumeros
+}
 
-// console.log(soma(1,2))
+console.log(soma(1,2))
 
 // b)
-// function comparacao (numero1, numero2){
-//     let numeroComparado= numero1 >= numero2
-//     return numeroComparado
-// }
+function comparacao (numero1, numero2){
+    let numeroComparado= numero1 >= numero2
+    return numeroComparado
+}
 
-// console.log(comparacao(5,6))
+console.log(comparacao(5,6))
 
 // c)
-// function par (numero){
-//     let divisao = numero % 2
-//     let resultado = divisao === 0
-//     return resultado
-// }
+function par (numero){
+    let divisao = numero % 2
+    let resultado = divisao === 0
+    return resultado
+}
 
-// console.log(par(5))
+console.log(par(5))
 
 // d)
+let mensagemUsuario = prompt("Deixe sua mensagem")
+function mensagem (texto){
+    const tamanho = texto.length
+    const mensagemFormatada = texto.toUpperCase()
+    return `${tamanho}, ${mensagemFormatada}`
+}
+
+console.log(mensagem(mensagemUsuario))
+
+// 3)
+function soma (numero1, numero2){
+    const resultadoSoma = Number(numero1) + Number(numero2)
+    return `Soma: ${resultadoSoma}`
+}
+
+function subtracao (numero1, numero2){
+    const resultadoSubtracao = Number(numero1) - Number(numero2)
+    return `Diferença: ${resultadoSubtracao}`
+}
+
+function multiplicacao (numero1, numero2){
+    const resultadoMultiplicacao = Number(numero1) * Number(numero2)
+    return `Muntiplicação: ${resultadoMultiplicacao}`
+}
+
+function divisao (numero1, numero2){
+    const resultadoDivisao = Number(numero1) / Number(numero2)
+    return `Divisão ${resultadoDivisao}`
+}
+
+let numeroUsuario1 = prompt("Digite um numero")
+let numeroUsuario2 = prompt("Digite outro numero")
+
+console.log(`Números inseridos: ${numeroUsuario1} e ${numeroUsuario2}`)
+console.log(soma(numeroUsuario1, numeroUsuario2))
+console.log(subtracao(numeroUsuario1, numeroUsuario2))
+console.log(multiplicacao(numeroUsuario1, numeroUsuario2))
+console.log(divisao(numeroUsuario1, numeroUsuario2))

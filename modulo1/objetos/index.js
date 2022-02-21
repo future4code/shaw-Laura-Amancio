@@ -75,10 +75,10 @@ const pessoa = {
 
 
 function mensagem(objeto){
-    console.log(`Eu sou ${pessoa.nome}, mas pode me chamar de ${pessoa.apelidos[0]}, ${pessoa.apelidos[1]} ou ${pessoa.apelidos[2]}`)
+    console.log(`Eu sou ${objeto.nome}, mas pode me chamar de ${objeto.apelidos[0]}, ${objeto.apelidos[1]} ou ${objeto.apelidos[2]}`)
 }
 
-// mensagem(pessoa)
+mensagem(pessoa)
 
 // b-
 const novoApelido = {
@@ -89,25 +89,25 @@ mensagem(novoApelido)
 
 // 2)
 
-// const pessoaUm = {
-//     nome: "Cida",
-//     idade: 60,
-//     profissao: "Arquiteta",
-// }
+const pessoaUm = {
+    nome: "Cida",
+    idade: 60,
+    profissao: "Arquiteta",
+}
 
-// const pessoaDois = {
-//     nome: "Marcos",
-//     idade: 25,
-//     profissao: "ator"
-// }
+const pessoaDois = {
+    nome: "Marcos",
+    idade: 25,
+    profissao: "ator"
+}
 
-// function novaArray(objeto){
-//     const resultado = [objeto.nome, objeto.nome.length, objeto.idade, objeto.profissao, objeto.profissao.length]
-//     return resultado
-// }
+function novaArray(objeto){
+    const resultado = [objeto.nome, objeto.nome.length, objeto.idade, objeto.profissao, objeto.profissao.length]
+    return resultado
+}
 
-// console.log(novaArray(pessoaUm))
-// console.log(novaArray(pessoaDois))
+console.log(novaArray(pessoaUm))
+console.log(novaArray(pessoaDois))
 
 // Jeito desnecessário:
 // function valoresPedidosUm(pessoa){
@@ -125,30 +125,30 @@ mensagem(novoApelido)
 
 // 3)
 
-// const carrinho = []
+const carrinho = []
 
-// const primeiraFruta = {
-//     nome: "Abacate",
-//     disponibilidade: true,
-// }
+const primeiraFruta = {
+    nome: "Abacate",
+    disponibilidade: true,
+}
 
-// const segundaFruta = {
-//     nome:"Mamão",
-//     disponibilidade: true,
-// }
+const segundaFruta = {
+    nome:"Mamão",
+    disponibilidade: true,
+}
 
-// const terceiraFruta = {
-//     nome:"Banana",
-//     disponibilidade: true,
-// }
+const terceiraFruta = {
+    nome:"Banana",
+    disponibilidade: true,
+}
 
-// function novoArray(objeto) {
-//     const FrutasnoArray = carrinho.push(objeto)
-//     return FrutasnoArray
-// }
+function novoArray(objeto) {
+    const FrutasnoArray = carrinho.push(objeto)
+    return FrutasnoArray
+}
 
-// novoArray(primeiraFruta)
-// novoArray(segundaFruta)
-// novoArray(terceiraFruta)
+novoArray(primeiraFruta)
+novoArray(segundaFruta)
+novoArray(terceiraFruta)
 
-// console.log(carrinho)
+console.log(carrinho)

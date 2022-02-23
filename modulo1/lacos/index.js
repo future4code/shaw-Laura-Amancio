@@ -52,20 +52,20 @@
 
 // c) Por fim, imprima o array com os nomes dos bichinhos no console
 
-// const bichosUsuario = Number(prompt("Quantos buchinhos de estimação vc tem?"))
-// let arrayBichos = []
-// let contador = 0 // no de baixo usei i (indice)
+const bichosUsuario = Number(prompt("Quantos buchinhos de estimação vc tem?"))
+let arrayBichos = []
+let contador = 0 // no de baixo usei i (indice)
 
-// if (bichosUsuario === 0){
-//     console.log("Que pena! Você pode adotar um pet!")
-// }else if(bichosUsuario > 0){
-//     while(contador < bichosUsuario){
-//         nomes = prompt("Qual nome dos bichinhos?");
-//         arrayBichos.push(nomes);
-//         contador = contador + 1 //i++
-//     }
-//     console.log(arrayBichos)
-// }
+if (bichosUsuario === 0){
+    console.log("Que pena! Você pode adotar um pet!")
+}else if(bichosUsuario > 0){
+    while(contador < bichosUsuario){
+        nomes = prompt("Qual nome dos bichinhos?");
+        arrayBichos.push(nomes);
+        contador = contador + 1 //i++
+    }
+    console.log(arrayBichos)
+}
 
 // for(let i = 0; i < bichosUsuario; i++){
 //     let nome = prompt("Qual nome dos bichinhos?")
@@ -74,36 +74,60 @@
 
 // 2)
 
-const arrayOriginal = [10, 2, 58, 44, 46, 1, 85, 95, 48, 69, 77, 102, 118, 13, 56]
+const arrayOriginal = [10, 2, 58, 44, 46, 56, 85, 95, 48, 69, 77, 102, 118, 13, 1]
 
 // a)
-// function imprimir(array){
-//     for(let numero of array){
-//         console.log(numero)
-//     }
-// }
-// imprimir(arrayOriginal)
+function imprimir(array){
+    for(let numero of array){
+        console.log(numero)
+    }
+}
+imprimir(arrayOriginal)
 
 // b)
-// function dividido10(array){
-//     for(let numero of array){
-//     console.log(numero/10)
-//     }
-// }
-// dividido10(arrayOriginal)
+function dividido10(array){
+    for(let numero of array){
+    console.log(numero/10)
+    }
+}
+dividido10(arrayOriginal)
 
 // c)
-// function numerosPares(array){
-//     for(let numero of array){
-//         if(numero % 2 === 0){
-//             let novaArray = [];
-//             novaArray.push(numero);
-//             console.log(novaArray)
-//         }
-//     }
-// }
-// numerosPares(arrayOriginal)
+function numerosPares(array){
+    for(let numero of array){
+        if(numero % 2 === 0){
+            let novaArray = [];
+            novaArray.push(numero);
+            console.log(novaArray)
+        }
+    }
+}
+numerosPares(arrayOriginal)
 
 // d)
 
+const arrayString = ["o", "elemento", "do", "index", "é"]
+
+function passandoIndex(array){
+    for(let i = 0; i === array[i]; i++  ){
+        console.log(array)
+    }
+}
+
 // e)
+function maiorMenor(array){
+    let maiorNumero = 0
+    let menorNumero = arrayOriginal[0]
+    for(let numero of array){
+        if(numero > maiorNumero){
+            maiorNumero = numero
+        }
+
+        if(numero < menorNumero){
+            menorNumero = numero
+        }
+    }
+    console.log(maiorNumero, menorNumero)
+}
+
+maiorMenor(arrayOriginal)

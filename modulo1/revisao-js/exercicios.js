@@ -50,7 +50,12 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
-
+    const objeto = {
+        maiorNumero: Math.max(num1, num2),
+        maiorDivisivelPorMenor: Math.max(num1, num2) % Math.min(num1, num2) === 0,
+        diferenca: Math.max(num1, num2) - Math.min(num1, num2)
+    }
+    return objeto
 }
 
 // EXERCÍCIO 08
@@ -60,17 +65,24 @@ function retornaNPrimeirosPares(n) {
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-
+    if(ladoA === ladoB && ladoA === ladoC && ladoB === ladoC){
+        return "Equilátero"
+    }else if(ladoA === ladoB && ladoA !== ladoC || ladoA !== ladoB && ladoA === ladoC){
+        return "Isóceles"
+    }else if(ladoA !== ladoB && ladoA !== ladoC && ladoB !== ladoC){
+        return "Escaleno"
+    }
 }
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-
+    
 }
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-
+    const atoresString = filme.atores.join(', ')
+    return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${atoresString}.`
 }
 
 // EXERCÍCIO 12
@@ -90,7 +102,7 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    // função de array map ou filter criam um novo array, posso usar então o for e forEach (faz uma função ali dentro)
 }
 
 // EXERCÍCIO 15A

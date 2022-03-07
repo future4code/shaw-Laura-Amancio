@@ -14,7 +14,7 @@ function retornaArrayInvertido(array) {
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-  return array.prototype.sort();
+  return array.sort((a, b) => a-b)
 }
 
 // EXERCÍCIO 04
@@ -60,23 +60,33 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-
+    let numerosPares = []
+    for(let i = 0; numerosPares.length < n; i++)
+    if(i % 2 ===0){
+        numerosPares.push(i)
+    }
+    return numerosPares
 }
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-    if(ladoA === ladoB && ladoA === ladoC && ladoB === ladoC){
+    if(ladoA === ladoB && ladoB === ladoC){
         return "Equilátero"
-    }else if(ladoA === ladoB && ladoA !== ladoC || ladoA !== ladoB && ladoA === ladoC){
-        return "Isóceles"
-    }else if(ladoA !== ladoB && ladoA !== ladoC && ladoB !== ladoC){
+    }else if(ladoA !== ladoB && ladoA !== ladoC && ladoC !== ladoB){
         return "Escaleno"
+    }else{
+        return "Isóceles"
     }
 }
 
+console.log(classificaTriangulo(5,5,5))
+
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-    
+    array.sort((a, b) => a-b)
+    const segundoMenor = array[1]
+    const segundoMaior = array[array.length -2]
+    return [segundoMaior, segundoMenor]
 }
 
 // EXERCÍCIO 11
@@ -87,27 +97,56 @@ function retornaChamadaDeFilme(filme) {
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-
+    const pessoaAnonima = {
+        ...pessoa,
+        nome: "ANÔNIMO",
+    }
+    return pessoaAnonima
 }
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-
+    const pessoasAutorizadas = pessoas.filter((pessoa) => {
+        return pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60
+    })
+    return pessoasAutorizadas
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-
+    const pessoasNaoAutorizadas = pessoas.filter((pessoa) => {
+      return pessoa.altura < 1.5 || pessoa.idade <= 14 || pessoa.idade > 60
+    })
+    return pessoasNaoAutorizadas
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-    // função de array map ou filter criam um novo array, posso usar então o for e forEach (faz uma função ali dentro)
+    contas.forEach((conta) => {
+      let totalDeCompra = 0
+
+      conta.compras.forEach((compra) => {
+        totalDeCompra = totalDeCompra + compra
+      })
+
+    conta.compras = []
+    conta.saldoTotal = conta.saldoTotal - totalDeCompra
+    })
+
+  return contas
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-
+  return consultas.sort((a, b) => {
+    if(a.nome > b.nome){
+      return 1
+    }else if(a.nome < b.nome){
+      return -1
+    }else{
+      return 0
+    }
+  })
 }
 
 // EXERCÍCIO 15B

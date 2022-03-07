@@ -70,16 +70,14 @@ function retornaNPrimeirosPares(n) {
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-    if(ladoA === ladoB && ladoB === ladoC){
-        return "Equilátero"
-    }else if(ladoA !== ladoB && ladoA !== ladoC && ladoC !== ladoB){
-        return "Escaleno"
-    }else{
-        return "Isóceles"
-    }
+  if((ladoA === ladoB) && (ladoB === ladoC) && (ladoC === ladoA)){
+    return "Equilátero"
+  }else if((ladoA !== ladoB) && (ladoB !== ladoC) && (ladoC !== ladoA)){
+    return "Escaleno"
+  }else{
+    return "Isósceles"
+  }
 }
-
-console.log(classificaTriangulo(5,5,5))
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {

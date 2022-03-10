@@ -33,9 +33,9 @@ div>p:first-child {
     display: inline;
 }
 
-/* div img {
+div img {
     background: black;
-} */
+}
 
 .botao-amarelo {
     background-color: #ffaf43;
@@ -59,8 +59,8 @@ div>p:first-child {
 
 .icone {
     height: 15px;
+    background-color: white;
 }
-
 
 /** 
   *

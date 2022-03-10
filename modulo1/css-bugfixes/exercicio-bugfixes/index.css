@@ -1,8 +1,6 @@
-/** 
-  *
-  *  ESTILOS GERAIS 
-  *
-  **/
+body{
+    font-family: 'Roboto', sans-serif;
+}
 
 * {
     margin: 0;
@@ -19,7 +17,9 @@ h2 {
 input {
     height: 20px;
     width: 500px;
-    border: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
     border-bottom: solid;
 }
 
@@ -35,9 +35,6 @@ div>p:first-child {
     display: inline;
 }
 
-div img {
-    background: black;
-}
 
 .botao-amarelo {
     background-color: #ffaf43;
@@ -48,6 +45,7 @@ div img {
     color: white;
     display: block;
     margin: 0 auto;
+    margin-top: 150px;
 }
 
 .botao-amarelo:hover {
@@ -61,7 +59,7 @@ div img {
 
 .icone {
     height: 15px;
-    background-color: white;
+    width: 15px;
 }
 
 /** 
@@ -73,7 +71,7 @@ div img {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
-    padding-top: 15px;
+    padding-top: 170px;
 }
 
 #container-de-descricao>ol {

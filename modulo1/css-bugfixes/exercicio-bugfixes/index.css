@@ -45,7 +45,7 @@ div>p:first-child {
     color: white;
     display: block;
     margin: 0 auto;
-    margin-top: 150px;
+    margin-top: 50px
 }
 
 .botao-amarelo:hover {
@@ -68,10 +68,11 @@ div>p:first-child {
   *
   **/
 
-#container-de-descricao {
+#container-de-descricao{
     background-color: #2274a5;
-    color: white;
-    padding-top: 170px;
+    color:white;
+    padding-top: 150px;
+    padding-bottom: -150px;
 }
 
 #container-de-descricao>ol {

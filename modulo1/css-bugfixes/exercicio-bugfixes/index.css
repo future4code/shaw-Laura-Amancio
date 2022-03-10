@@ -1,10 +1,10 @@
-body{
-    font-family: 'Roboto', sans-serif;
-}
-
 * {
     margin: 0;
     padding: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
 }
 
 h2 {
@@ -105,6 +105,7 @@ table {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    font-weight: 600;
 }
 
 td button {
@@ -113,6 +114,7 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
+    font: bold;
 }
 
 td button:hover{
@@ -137,6 +139,9 @@ td button:active{
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
 }
 
 #back-button:hover {

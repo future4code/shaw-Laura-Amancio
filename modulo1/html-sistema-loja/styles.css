@@ -1,0 +1,81 @@
+body{
+    background-color: #b2a8be;
+    color: #170039;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: bold;
+    margin: 0, 0, 0, 0;
+    text-align: center;
+}
+
+h1{
+    font-size: 50px;
+    color: #170039;
+}
+
+h2{
+    font-size: 30px;
+    color: #170039; 
+}
+.subtitulo-inicial{
+    font-size: 25px;
+    color: #170039;
+}
+
+.menu-principal{
+    background-color: #7d77af;
+    height: 40px;
+    max-width: 60%;
+    display: inline-block;
+}
+
+.menu-principal a{
+    color:#170039;
+    padding: 50px;
+    font-size: 18px;
+    font-weight: 2000;
+    line-height: 2;
+}
+
+.texto-principal{
+    margin: auto;
+    width: 60%;
+    font-size: 20px;
+}
+
+th{
+    font-size: 20px;
+    color: #170039; 
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.imagens-comidas{
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    max-width:200px;
+    max-height:200px;
+    min-height:200px; 
+    min-width:200px;
+    width: auto;
+    height: auto;
+}
+
+.titulo-secundario{
+    font-size: 40px;
+    color: #170039;
+}
+
+.imagem-insta{
+    max-width: 40px;
+    height: 40px;
+}
+
+footer{
+    position: relative;
+    bottom:0;
+    width:100%
+}

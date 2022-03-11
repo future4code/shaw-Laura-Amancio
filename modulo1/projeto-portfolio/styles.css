@@ -1,0 +1,60 @@
+body{
+    color: black;
+}
+
+header{
+    background-color: #febe00;
+    margin: 0;
+    text-align: center;
+}
+
+h1{
+    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Monoton', cursive;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer{
+    background-color: #febe00;
+    text-align: center;
+}
+
+.menu-principal li{
+    display: inline-block;
+    line-height: 2.5;
+    margin: 0px 100px;
+}
+
+.menu-principal a{
+    color: black;
+}
+
+.rodape li{
+    display: inline-block;
+    margin: 0px 100px;
+}
+
+.icon-redes-sociais{
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    max-width:50px;
+    max-height:50px;
+    min-height:50px; 
+    min-width:50px;
+    width: auto;
+    height: auto;
+}
+
+.foto-perfil{
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    max-width:350px;
+    max-height:350px;
+    min-height:350px; 
+    min-width:350px;
+    width: auto;
+    height: auto;
+    border-radius: 100%;
+}

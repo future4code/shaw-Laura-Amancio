@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: flex;
+    background-color: rgb(241, 118, 74);
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+header>form{
+    padding-right: 30px;
+}
+
+button{
+    background-color: rgb(253, 196, 175);
+    width: 80px;
+}
+
+button:hover{
+    background-color: brown;
+    color: wheat;
+}
+
+main{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    flex-grow: 1;
+}
+
+
+.container-cards{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 15px;
+    column-gap: 15px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card p{
+    padding-top: 6px;
+}
+
+.card img{
+    width: 250px
+}
+
+footer{
+    display: flex;
+    background-color: rgb(241, 118, 74);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}

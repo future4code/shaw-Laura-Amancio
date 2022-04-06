@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 const MainUsuarios = styled.div`
     display: flex;
@@ -22,6 +23,8 @@ const headers = {
   },
 };
 
+toast.configure()
+
 export default class TelaUsuarios extends React.Component {
   state = {
     usuarios: [],
@@ -40,7 +43,7 @@ export default class TelaUsuarios extends React.Component {
         this.setState({ usuarios: res.data });
       })
       .catch((err) => {
-        alert("algo deu errado, não conseguimos achar a lista :(");
+        toast.error("algo deu errado, não conseguimos achar a lista :(");
       });
   }
 
@@ -49,11 +52,11 @@ export default class TelaUsuarios extends React.Component {
     axios
       .delete(url, headers)
       .then((res) => {
-        alert("Usuário(a) deletado com sucesso!");
         this.getAllUsers();
+        toast.success("Usuário deletado!")
       })
       .catch((err) => {
-        alert("Algo deu errado, tente de novo");
+        toast.error("Algo deu errado, tente de novo");
       });
   };
 
@@ -64,8 +67,11 @@ export default class TelaUsuarios extends React.Component {
           {usuario.name}
           <button onClick={() => this.deleteUser(usuario.id)}>X</button>
         </ListaUsuarios>
-      );
-    });
+      )
+    })
+    // .sort((currentUser, nextUser) => {
+    //     return currentUser.name.localCompare(nextUser.name)
+    // })
     return (
       <MainUsuarios>
         <button onClick={this.props.irParaCadastro}>Mudar de Página</button>

@@ -1,24 +1,28 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MainCadastro = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 
-    input{
-        margin: 5px;
-    }
-`
+  input {
+    margin: 5px;
+  }
+`;
 
 const headers = {
   headers: {
     Authorization: "laura-amancio-shaw",
   },
 };
+
+toast.configure()
 
 export default class TelaCadastro extends React.Component {
   state = {
@@ -44,14 +48,14 @@ export default class TelaCadastro extends React.Component {
     axios
       .post(url, body, headers)
       .then((res) => {
-        alert("Usuário (a) criado (a) com sucesso :)");
+        toast.success("Usuário criado com sucesso :)");
         this.setState({
           inputEmail: "",
           inputNome: "",
         });
       })
       .catch((err) => {
-        alert(err.data);
+        toast.error("Ixi, algo deu errado");
       });
   };
 
@@ -61,17 +65,17 @@ export default class TelaCadastro extends React.Component {
         <button onClick={this.props.irParaUsuarios}>Mudar de Página</button>
         <h3>Tela Cadastro</h3>
         <nav>
-            <input
+          <input
             placeholder="Nome"
             value={this.state.inputNome}
             onChange={this.onChangeInputNome}
-            />
-            <input
+          />
+          <input
             placeholder="Email"
             value={this.state.inputEmail}
             onChange={this.onChangeInputEmail}
-            />
-            <button onClick={this.createUser}>Cadastrar</button>
+          />
+          <button onClick={this.createUser}>Cadastrar</button>
         </nav>
       </MainCadastro>
     );

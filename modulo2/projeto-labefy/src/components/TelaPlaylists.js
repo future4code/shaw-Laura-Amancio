@@ -1,6 +1,89 @@
 import React from "react";
 import axios from "axios";
 import TelaInfoPlaylist from "./TelaInfoPlaylist";
+import styled from "styled-components";
+
+//CSS
+
+const MainPlay = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2vh;
+  background-color: #1d1d1d;
+  color: white;
+  height: 83.2vh;
+  align-items: center;
+
+  h3 {
+    padding-top: 5vh;
+  }
+`;
+const CardCriaPlay = styled.div`
+  display: flex;
+  margin-top: 1vh;
+  align-items: center;
+  width: 100%;
+  padding: 2vh;
+
+  input{
+    margin-left: 5px;
+  }
+
+  button{
+    margin-left: 5px;
+    width:50px;
+    height:20px;
+    border-width:1px;
+    color:#fff;
+    border-color:#18ab29;
+    font-weight:bold;
+    border-radius: 28px;
+    text-shadow: 1px 1px 0px #2f6627;
+    background:#44c767;
+  }
+
+  button:hover{
+    background: #5cbf2a;
+    cursor: pointer;
+  }
+`;
+
+const ListaPlaylist = styled.li`
+  list-style-type: none;
+  padding: 2vh;
+  width: 40vh;
+  display: flex;
+  justify-content: space-between;
+
+  :hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
+const CardPLaylists = styled.div`
+
+  display: flex;
+  align-items: center;
+
+   button {
+    width: 50px;
+    height: 20px;
+    border-width: 1px;
+    color: #fff;
+    border-color: rgba(208, 2, 27, 1);
+    border-radius: 28px;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+    background: rgba(208, 2, 27, 1);
+  }
+
+  button:hover{
+    background: rgba(192, 65, 65, 1);
+    cursor: pointer;
+  }
+`
+
+//JSX
 
 const headers = {
   headers: {
@@ -18,7 +101,7 @@ export default class TelaPlaylists extends React.Component {
 
   navegaTela = (idPlaylist) => {
     if (this.state.telaAtual === "playlists") {
-      this.setState({ telaAtual: "infos", idPlaylist: idPlaylist});
+      this.setState({ telaAtual: "infos", idPlaylist: idPlaylist });
     } else {
       this.setState({ telaAtual: "playlists", idPlaylist: "" });
     }
@@ -65,17 +148,18 @@ export default class TelaPlaylists extends React.Component {
       });
   }
 
-  deletePlaylist = (id) =>{
-      const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`
-          axios.delete(url, headers)
-          .then(() => {
-              alert("Playlist Apagada")
-              this.getAllPlaylists()
-          })
-          .catch(() => {
-              alert("Ops, algo deu errado")
-          })
-  }
+  deletePlaylist = (id) => {
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`;
+    axios
+      .delete(url, headers)
+      .then(() => {
+        alert("Playlist Apagada");
+        this.getAllPlaylists();
+      })
+      .catch(() => {
+        alert("Ops, algo deu errado");
+      });
+  };
 
   //cria uma função que vai me retornar um array, nessa função já posso emendar o .sort, pq aqui ele ta retornando esse array.
   //Lá, direto do map não consigo pq ele ta jogando o .sort em um JSX (em cima no <li>), então ele n entende.
@@ -87,32 +171,43 @@ export default class TelaPlaylists extends React.Component {
 
   render() {
     return (
-      <div>
-          {this.state.telaAtual === "playlists" ? (
-              <div>
-                  <h4>Crie uma nova Playlist</h4>
-                  <div>
-                  <input
-                    placeholder="Nome da Playlist"
-                    value={this.state.inputNomePlaylist}
-                    onChange={this.onChangeInputNomePlaylist}
-                    />
-                    <button onClick={this.createPlaylist}>Criar</button>
-                    {this.renderPlay().map((playlist) =>{
-                        return (
-                            <li key={playlist.id}>
-                                {playlist.name}
-                                <button onClick={() => this.navegaTela(playlist.id)}>Ver</button>
-                                <button onClick={() => this.deletePlaylist(playlist.id)}>Apagar</button>
-                            </li>
-                        )
-                    })}
-                  </div>
-              </div>
-          ) : (
-              <TelaInfoPlaylist idPlaylist={this.state.idPlaylist} navegaTela={this.navegaTela}/>
-          )}
-      </div>
+      <MainPlay>
+        {this.state.telaAtual === "playlists" ? (
+          <div>
+            <h2>Sua Biblioteca</h2>
+            <h3>Playlists</h3>
+            <CardCriaPlay>
+              <h4>Crie uma nova Playlist</h4>
+              <input
+                placeholder="Nome da Playlist"
+                value={this.state.inputNomePlaylist}
+                onChange={this.onChangeInputNomePlaylist}
+              />
+              <button onClick={this.createPlaylist}>Criar</button>
+            </CardCriaPlay>
+            {this.renderPlay().map((playlist) => {
+              return (
+                <CardPLaylists>
+                  <ListaPlaylist
+                    key={playlist.id}
+                    onClick={() => this.navegaTela(playlist.id)}
+                  >
+                    {playlist.name}
+                  </ListaPlaylist>
+                  <button onClick={() => this.deletePlaylist(playlist.id)}>
+                    Excluir
+                  </button>
+                </CardPLaylists>
+              );
+            })}
+          </div>
+        ) : (
+          <TelaInfoPlaylist
+            idPlaylist={this.state.idPlaylist}
+            navegaTela={this.navegaTela}
+          />
+        )}
+      </MainPlay>
     );
   }
 }

@@ -7,6 +7,7 @@ const HeaderStyle =  styled.div`
     justify-content: center;
     align-items: center;
     background-color: #1d1d1d;
+    padding-top: 4px;
 
     img{
         width: 25vh;

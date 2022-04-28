@@ -6,23 +6,32 @@ import {
   goToLoginPage,
   goToTripDetailsPage,
 } from "../routes/cordinators";
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import axios from "axios";
 import { baseUrl } from "../constants/constants";
+import { useProtectedPage } from "../hooks/useProtectedPages";
+
 
 const AdminHomePage = () => {
+  useProtectedPage();
+  
+  const [trips, setTrips] = useState([])
   const navigate = useNavigate();
-  // const [trips,setTrips] = useState([])
 
-  useEffect(() => {
+  useEffect(()=>{
+    getTrips()
+  },[trips.length])
+
+  const getTrips = () =>{
     axios.get(`${baseUrl}laura-amancio-shaw/trips`)
     .then((res) => {
       console.log(res.data)
+      setTrips(res.data)
     })
     .catch((err) => {
       console.log(err.response)
     })
-  })
+  }
 
   return (
     <div>

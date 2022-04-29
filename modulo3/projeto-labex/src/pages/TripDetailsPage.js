@@ -12,10 +12,6 @@ const TripDetailsPage = () => {
   const params = useParams();
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    getTripDetails();
-  }, []);
-
   const getTripDetails = () => {
     const headers = {
       headers: {
@@ -26,7 +22,6 @@ const TripDetailsPage = () => {
       .get(`${baseUrl}laura-amancio-shaw/trip/${params.id}`, headers)
       .then((res) => {
         setTripDetails(res.data.trip);
-        console.log(res.data.trip);
       })
       .catch((err) => {
         console.log(err.response);
@@ -49,7 +44,7 @@ const TripDetailsPage = () => {
         headers
       )
       .then((res) => {
-        console.log(res.data);
+        alert("Sucesso");
       })
       .catch((err) => {
         console.log(err.response);
@@ -74,6 +69,10 @@ const TripDetailsPage = () => {
         </div>
       );
     });
+
+  useEffect(() => {
+    getTripDetails();
+  }, [candidates]);
 
   const approvedCandidates =
     tripDetails.approved &&
@@ -101,8 +100,8 @@ const TripDetailsPage = () => {
         {candidates}
       </div>
       <div>
-          <h3>Candidatos aprovados</h3>
-      {approvedCandidates}
+        <h3>Candidatos aprovados</h3>
+        {approvedCandidates}
       </div>
     </div>
   );

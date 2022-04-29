@@ -14,7 +14,7 @@ import { useProtectedPage } from "../hooks/useProtectedPages";
 
 const AdminHomePage = () => {
   useProtectedPage();
-  
+
   const [trips, setTrips] = useState([])
   const navigate = useNavigate();
 
@@ -25,19 +25,24 @@ const AdminHomePage = () => {
   const getTrips = () =>{
     axios.get(`${baseUrl}laura-amancio-shaw/trips`)
     .then((res) => {
-      console.log(res.data)
-      setTrips(res.data)
+      setTrips(res.data.trips)
     })
     .catch((err) => {
       console.log(err.response)
     })
   }
 
+  const renderTrips = trips.map((trip) => {
+    return (
+      <li key={trip.id} onClick={() => goToTripDetailsPage(navigate, trip.id)}>{trip.name}</li>
+    )
+  })
+
   return (
     <div>
       <h2>Adm Home Page</h2>
       <ul>
-        <li onClick={() => goToTripDetailsPage(navigate)}>Viagem exemplo</li>
+        {renderTrips}
       </ul>
       <button onClick={() => goBack(navigate)}>Voltar</button>
       <button onClick={() => goToCreateTripPage(navigate)}>Criar Viagem</button>

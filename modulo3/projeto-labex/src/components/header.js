@@ -1,6 +1,8 @@
 import React from "react";
 import HomeIcon from '@mui/icons-material/Home';
 import styled from "styled-components";
+// import { goToHomePage } from "../routes/cordinators";
+// import { useNavigate } from "react-router-dom";
 
 const HeaderMain = styled.div`
     display: flex;
@@ -12,7 +14,6 @@ const HeaderMain = styled.div`
 `
 
 const Header = () => {
-
     return (
         <HeaderMain>
             <h1>LabeX</h1>

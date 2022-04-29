@@ -20,7 +20,7 @@ const AdminHomePage = () => {
 
   useEffect(()=>{
     getTrips()
-  },[trips.length])
+  },[trips])
 
   const getTrips = () =>{
     axios.get(`${baseUrl}laura-amancio-shaw/trips`)
@@ -32,9 +32,28 @@ const AdminHomePage = () => {
     })
   }
 
+  const deleteTrip = (id) =>{
+    const token = localStorage.getItem("token");
+    const headers = {
+      headers: {
+        auth: token,
+      },
+    };
+    axios.delete(`${baseUrl}laura-amancio-shaw/trips/${id}`, headers)
+    .then((res) =>{
+      alert("viagem excluída com sucesso")
+    })
+    .catch((err) =>{
+      alert("hm, algo deu errado")
+    })
+  }
+
   const renderTrips = trips.map((trip) => {
     return (
-      <li key={trip.id} onClick={() => goToTripDetailsPage(navigate, trip.id)}>{trip.name}</li>
+      <div>
+          <li key={trip.id} onClick={() => goToTripDetailsPage(navigate, trip.id)}>{trip.name}</li>
+          <button onClick={() => deleteTrip(trip.id)}>Deletar Viagem</button>
+      </div>
     )
   })
 

@@ -13,7 +13,7 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element= { <HomePage/> }/>
+                <Route path="/" element= { <HomePage/> }/>
                 <Route path="/trips/list" element={ <ListTripPage/> } />
                 <Route path= "/trips/application" element={ <ApplicationFormPage/> } />
                 <Route path= "/login" element={ <LoginPage/> }/>

@@ -24,7 +24,7 @@ const ApplicationFormPage = () => {
     getTrips();
   },[])
 
-  const getTrips = () =>{
+  const getTrips = () => {
     axios.get(`${baseUrl}laura-amancio-shaw/trips`)
     .then((res) => {
       setTrips(res.data.trips)

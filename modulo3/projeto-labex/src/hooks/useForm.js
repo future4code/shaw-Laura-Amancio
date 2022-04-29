@@ -8,7 +8,11 @@ const useForm = (initialState) =>{
         setForm({...form, [name]: value})
     }
 
-    return {form, onChange}
+    const cleanFields = () =>{
+        setForm(initialState)
+    }
+
+    return {form, onChange, cleanFields}
 }
 
 export default useForm;

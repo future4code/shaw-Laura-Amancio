@@ -25,6 +25,8 @@ const ListTripPage = () => {
       }
 
       const renderTripsList = tripsList.map((trip) =>{
+        // const date = new Date(trip.date);
+        // const dateString = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
         return (
           <div key={trip.id}>
             <p>Nome: {trip.name}</p>

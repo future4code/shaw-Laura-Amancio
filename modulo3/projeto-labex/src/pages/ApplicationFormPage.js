@@ -4,6 +4,51 @@ import { useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import axios from "axios";
 import { baseUrl } from "../constants/constants"
+import styled from "styled-components";
+
+const Button = styled.button`
+  width: 8vw;
+  height: 3vh;
+  font-size: medium;
+  background-color: #260729;
+  color: #ebdfcc;
+  margin: 8px;
+
+  :hover {
+    background-color: #2a2344;
+    cursor: pointer;
+  }
+`;
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2{
+    color: #2a2344;
+    margin: 20px;
+  }
+`
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  select{
+    margin: 10px;
+    height: 30px;
+  }
+
+  input{
+    margin: 10px;
+    height: 30px;
+  };
+`
 
 const ApplicationFormPage = () => {
   const navigate = useNavigate();
@@ -48,6 +93,7 @@ const ApplicationFormPage = () => {
     axios.post(`${baseUrl}laura-amancio-shaw/trips/${tripId}/apply`, form)
     .then((res) =>{
       console.log(res.data)
+      alert("Aplicado com sucesso, Boa Sorte!")
       cleanFields()
     })
     .catch((err) =>{
@@ -59,13 +105,11 @@ const ApplicationFormPage = () => {
     setTripId(event.target.value)
   }
 
-  console.log(form)
-
   return (
-    <div>
-      <h2>Application Form Page</h2>
+    <Main>
+      <h2>Aplique-se em uma de nossas viagens!</h2>
 
-      <form onSubmit={submit}>
+      <Form onSubmit={submit}>
         <select onChange={setId}>
           <option>Selecione uma viagem</option>
           {chooseTrip}
@@ -75,6 +119,8 @@ const ApplicationFormPage = () => {
           name={"name"}
           value={form.name}
           onChange={onChange}
+          pattern={"^.{3,}"}
+          title={"O nome deve ter no mínimo 3 letras"}
           required
         />
         <input
@@ -91,6 +137,8 @@ const ApplicationFormPage = () => {
           name={"applicationText"}
           value={form.applicationText}
           onChange={onChange}
+          pattern={"^.{30,}"}
+          title={"O título deve ter no mínimo 30 caracteres"}
           required
         />
         <input
@@ -98,8 +146,22 @@ const ApplicationFormPage = () => {
           name={"profession"}
           value={form.profession}
           onChange={onChange}
+          pattern={"^.{10,}"}
+          title={"Profissão deve ter no mínimo 10 caracteres"}
           required
         />
+
+        {/* <select
+        name={"country"}
+        value={form.country}
+        onChange={onChange}
+        required
+        >
+          {dataJson.map((country) =>(
+            <option>{country.nome}</option>
+          )
+          )}
+        </select> */}
         <input
         placeholder="Pais"
         name={"country"}
@@ -107,10 +169,10 @@ const ApplicationFormPage = () => {
         onChange={onChange}
         required
         />
-        <button>Enivar</button>
-      </form>
-      <button onClick={() => goBack(navigate)}>Voltar</button>
-    </div>
+        <Button>Enivar</Button>
+      </Form>
+      <Button onClick={() => goBack(navigate)}>Voltar</Button>
+    </Main>
   );
 };
 

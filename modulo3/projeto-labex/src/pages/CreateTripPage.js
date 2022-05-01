@@ -5,6 +5,51 @@ import { goBack } from "../routes/cordinators";
 import useForm from "../hooks/useForm";
 import axios from "axios";
 import { baseUrl } from "../constants/constants";
+import styled from "styled-components";
+
+const Button = styled.button`
+  width: 8vw;
+  height: 3vh;
+  font-size: medium;
+  background-color: #260729;
+  color: #ebdfcc;
+  margin: 8px;
+
+  :hover {
+    background-color: #2a2344;
+    cursor: pointer;
+  }
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  select{
+    margin: 10px;
+    height: 30px;
+  }
+
+  input{
+    margin: 10px;
+    height: 30px;
+  };
+`
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2{
+    color: #2a2344;
+    margin-top: 20px;
+  }
+`
 
 const CreateTripPage = () => {
   useProtectedPage();
@@ -30,8 +75,8 @@ const CreateTripPage = () => {
     axios
       .post(`${baseUrl}laura-amancio-shaw/trips`, form, headers)
       .then((res) => {
-        alert("viagem criada com sucesso")
-        cleanFields()
+        alert("viagem criada com sucesso");
+        cleanFields();
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -39,29 +84,42 @@ const CreateTripPage = () => {
   };
 
   return (
-    <div>
-      <h2>CreateTrip Page</h2>
-      <form onSubmit={submit}>
+    <Main>
+      <h2>Crie uma Viagem!</h2>
+      <Form onSubmit={submit}>
         <input
           placeholder="Título"
           name="name"
           value={form.name}
           onChange={onChange}
+          pattern={"^.{5,}"}
+          title={"O título deve ter no mínimo 5 letras"}
           required
         />
-        <input
-          placeholder="Planeta"
+        <select
           name="planet"
           value={form.planet}
           onChange={onChange}
           required
-        />
+        >
+          <option>Selecione um planeta</option>
+          <option>Mercúrio</option>
+          <option>Vênus</option>
+          <option>Marte</option>
+          <option>Júpiter</option>
+          <option>Saturno</option>
+          <option>Urano</option>
+          <option>Netuno</option>
+          <option>Lua</option>
+        </select>
+
         <input
           placeholder="Data"
           name="date"
           value={form.date}
           onChange={onChange}
           type="date"
+          min={new Date().toISOString().split('T')[0]}
           required
         />
         <input
@@ -69,6 +127,8 @@ const CreateTripPage = () => {
           name="description"
           value={form.description}
           onChange={onChange}
+          pattern={"^.{30,}"}
+          title={"O título deve ter no mínimo 30 caracteres"}
           required
         />
         <input
@@ -76,13 +136,15 @@ const CreateTripPage = () => {
           name="durationInDays"
           value={form.durationInDays}
           onChange={onChange}
+          min={5}
+          title={"Deve ter no mínimo 5 dias"}
           required
           type="number"
         />
-        <button>Criar</button>
-      </form>
-      <button onClick={() => goBack(navigate)}>Voltar</button>
-    </div>
+        <Button>Criar</Button>
+      </Form>
+      <Button onClick={() => goBack(navigate)}>Voltar</Button>
+    </Main>
   );
 };
 

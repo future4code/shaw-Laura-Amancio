@@ -1,23 +1,23 @@
 import React from "react";
-import HomeIcon from '@mui/icons-material/Home';
 import styled from "styled-components";
-// import { goToHomePage } from "../routes/cordinators";
-// import { useNavigate } from "react-router-dom";
 
 const HeaderMain = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: #260729;
     color: white;
-    padding: 5px;
+    padding: 20px;
+
+    h1{
+        background-color: #260729;
+    }
 `
 
 const Header = () => {
     return (
         <HeaderMain>
             <h1>LabeX</h1>
-            <HomeIcon/>
         </HeaderMain>
     )
 }

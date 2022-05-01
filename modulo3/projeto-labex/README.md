@@ -3,7 +3,7 @@
 Viage pelos planetas da Via Láctea!!
 
 ## 🖥️ Sobre o Projeto
-Link do site: 
+Link do site: https://abhorrent-building.surge.sh/
 
 Projeto desenvolvido para o curso FullStack da Labenu_. 
 Usada API própria da Instituição.

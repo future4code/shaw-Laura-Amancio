@@ -1,5 +1,31 @@
-## Link do Wireframe: 
-https://wireframe.cc/pro/pp/44885c8aa541604
+# LaubeX 🚀
 
-## Link do Surge
-https://zealous-potato.surge.sh/trips/list
+Viage pelos planetas da Via Láctea!!
+
+## 🖥️ Sobre o Projeto
+Link do site: 
+
+Projeto desenvolvido para o curso FullStack da Labenu_. 
+Usada API própria da Instituição.
+
+## ⚙️ Funcionalidades
+
+*Público:*
+
+✅Veja lista de viagens disponíveis;
+✅Aplique-se para as viagens;
+
+*Área Administrativa*
+
+✅Crie e exclua viagens;
+✅Aprove ou desaprove candidatos;
+✅Veja lista de candidatos aprovados nas viagens;
+
+## 🎨 Layout
+
+*Mobile*
+*Desktop*
+
+## 🛠 Tecnologias
+
+*React*

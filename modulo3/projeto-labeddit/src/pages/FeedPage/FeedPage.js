@@ -1,7 +1,8 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const FeedPage = () =>{
+    useProtectedPage()
     return (
         <div>
             <h2>FeedPage</h2>

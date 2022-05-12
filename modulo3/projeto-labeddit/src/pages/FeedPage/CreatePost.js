@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { TextField, Button } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import {createPost} from "../../services/posts"
 import {CardCreatePost} from "./styledFeedPage"
+import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const CreatePost = () => {
   const { form, onChange, clear } = useForm({ title: "", body: "" });
@@ -12,15 +14,17 @@ const CreatePost = () => {
       Authorization: token,
     },
   };
+  const [isLoading, setIsLoading] = useState(false)
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    createPost(form, clear, headers);
+    createPost(form, clear, headers, setIsLoading);
   };
 
   return (
     <CardCreatePost>
-      <h3>Faça um post ;)</h3>
+      <br/>
+      <Typography color="primary" variant="h5">Faça um post ;)</Typography>
       <form onSubmit={onSubmitForm}>
         <TextField
           name={"title"}
@@ -41,7 +45,7 @@ const CreatePost = () => {
           margin="normal"
         />
         <Button variant="contained" color="primary" type="submit">
-          Postar
+          {isLoading? <CircularProgress color="inherit" size="2rem"/> : <>Postar</>}
         </Button>
       </form>
     </CardCreatePost>

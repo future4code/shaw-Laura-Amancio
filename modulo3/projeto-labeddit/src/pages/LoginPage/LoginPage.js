@@ -6,16 +6,18 @@ import LoginForm from "./LoginForm";
 import { useNavigate } from "react-router-dom";
 import { goToCadastroPage } from "../../routes/condinators";
 import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
+import Typography from '@material-ui/core/Typography';
 
 const LoginPage = ({setRightButton}) => {
   const navigate = useNavigate();
   useUnprotectedPage();
-
+  
   return (
     <MainContainer>
       <CardImg>
         <img src={logo} alt={"logo da labeddit"} />
       </CardImg>
+      <Typography color="primary" variant="h3">LabEddit</Typography>
       <LoginForm setRightButton={setRightButton}/>
       <Button
         variant="text"

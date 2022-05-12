@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const useRequestData = (initialData, url) => {
   const [data, setData] = useState(initialData);
 
-  useEffect(() => {
+  const getData = () =>{
     const token = localStorage.getItem("token");
     const headers = {
       headers: {
@@ -14,15 +14,20 @@ const useRequestData = (initialData, url) => {
     axios
       .get(url, headers)
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
-        console.log(err.response);
+        alert(err.response);
       });
+  }
+
+
+  useEffect(() => {
+    getData()
   }, [url]);
 
-  return(data)
+  return([data, getData])
 };
+
 
 export default useRequestData;

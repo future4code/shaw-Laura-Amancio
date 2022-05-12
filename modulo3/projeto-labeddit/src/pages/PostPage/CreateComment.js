@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { TextField, Button } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import {createComment} from "../../services/posts"
 import { useParams } from "react-router-dom";
 import {CreateCommentCard} from "./styledPostPage"
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const CreateComment = () => {
   const { form, onChange, clear } = useForm({ body: "" });
@@ -14,10 +15,12 @@ const CreateComment = () => {
     },
   };
   const params = useParams()
+  const [isLoading, setIsLoading] = useState(false)
+
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    createComment(form, clear, headers, params.id);
+    createComment(form, clear, headers, params.id, setIsLoading);
   };
 
   return (
@@ -32,7 +35,7 @@ const CreateComment = () => {
           margin="normal"
         />
         <Button variant="contained" color="primary" type="submit">
-          Comentar
+        {isLoading? <CircularProgress color="inherit" size="2rem"/> : <>Comentar</>}
         </Button>
       </form>
     </CreateCommentCard>

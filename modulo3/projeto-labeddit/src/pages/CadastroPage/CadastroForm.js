@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { TextField, Button } from "@material-ui/core";
 import useForm from "../../hooks/useForm";
 import { MainContainer } from "./styledCadastro";
 import { signUp } from "../../services/users";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const LoginForm = ({setRightButton}) => {
   const navigate = useNavigate()
@@ -12,10 +13,11 @@ const LoginForm = ({setRightButton}) => {
     password: "",
     username: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    signUp(form, clear, navigate, setRightButton)
+    signUp(form, clear, navigate, setRightButton, setIsLoading)
   };
 
   return (
@@ -57,7 +59,7 @@ const LoginForm = ({setRightButton}) => {
           color="primary"
           type="submit"
         >
-          Cadastrar
+          {isLoading? <CircularProgress color="inherit" size="2rem"/> : <>Cadastrar</>}
         </Button>
       </form>
     </MainContainer>

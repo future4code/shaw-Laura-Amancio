@@ -1,7 +1,3 @@
-<div align="center">
-<img src={./assets/logo.png} alt="Logo LabEddit" width="500px" height="200px"/>
-</div> <br/>
-
 # 🖥️ LabEddit
 
 A rede social da Labenu_
@@ -13,7 +9,7 @@ Projeto da semana 12 do curso da Labenu_, com intuito de revisar os conteúdos d
 <br/>
 
 ## :link: Link Surge 
-- 
+- deranged-list.surge.sh
 
 ## ⚙️ Funcionalidades
 ✅ Botões de navegação pelo site no Header; <br/>

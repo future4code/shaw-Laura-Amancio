@@ -10,6 +10,8 @@ Projeto da semana 12 do curso da Labenu_, com intuito de revisar os conteúdos d
 
 ## :link: Link Surge 
 - deranged-list.surge.sh
+(email de acesso: hay@ley.com
+senha de acesso: 12345678)
 
 ## ⚙️ Funcionalidades
 ✅ Botões de navegação pelo site no Header; <br/>

@@ -5,6 +5,8 @@ import {createPost} from "../../services/posts"
 import {CardCreatePost} from "./styledFeedPage"
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import useRequestData from "../../hooks/useRequestData";
+import { BASE_URL } from "../../constants/urls";
 
 const CreatePost = () => {
   const { form, onChange, clear } = useForm({ title: "", body: "" });
@@ -15,10 +17,11 @@ const CreatePost = () => {
     },
   };
   const [isLoading, setIsLoading] = useState(false)
+  const [posts, getPosts] = useRequestData([], `${BASE_URL}/posts`);
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    createPost(form, clear, headers, setIsLoading);
+    createPost(form, clear, headers, setIsLoading, getPosts);
   };
 
   return (

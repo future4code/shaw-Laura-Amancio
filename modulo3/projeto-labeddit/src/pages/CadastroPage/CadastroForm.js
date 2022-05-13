@@ -5,6 +5,7 @@ import { MainContainer } from "./styledCadastro";
 import { signUp } from "../../services/users";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Typography } from "@material-ui/core";
 
 const LoginForm = ({setRightButton}) => {
   const navigate = useNavigate()
@@ -22,7 +23,7 @@ const LoginForm = ({setRightButton}) => {
 
   return (
     <MainContainer>
-      <h3> Olá, boas vindas ao LabEddit :) </h3>
+      <Typography color="primary" variant="h5">Olá, boas vindas ao LabEddit ;)</Typography>
       <form onSubmit={onSubmitForm}>
         <TextField
           name={"username"}

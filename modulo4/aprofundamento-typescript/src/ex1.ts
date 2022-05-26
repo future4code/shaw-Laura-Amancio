@@ -53,13 +53,13 @@ enum CoresArcoiris {
     ROXO = "Roxo"
 }
 
-type pessoaEnum = {
+type PessoaEnum = {
     nome: string,
     idade: number,
     corFavorita: CoresArcoiris
 }
 
-const pessoa4: pessoaEnum = {
+const pessoa4: PessoaEnum = {
     nome: "Brenda",
     idade: 25,
     corFavorita: CoresArcoiris.ROXO

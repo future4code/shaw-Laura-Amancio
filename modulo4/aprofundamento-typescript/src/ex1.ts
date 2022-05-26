@@ -21,19 +21,19 @@ const pessoa1: {nome: string, idade: number, corFavorita:string } = {
     corFavorita: "Amarelo"
 }
 
-type pessoa = {
+type Pessoa = {
     nome: string,
     idade: number,
     corFavorita: string
 }
 
-const pessoa2: pessoa = {
+const pessoa2: Pessoa = {
     nome: "Roberval",
     idade: 15,
     corFavorita: "Azul"
 }
 
-const pessoa3: pessoa = {
+const pessoa3: Pessoa = {
     nome: "Maria",
     idade: 65,
     corFavorita: "Vermelho"

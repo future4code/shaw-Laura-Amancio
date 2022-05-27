@@ -1,0 +1,21 @@
+{
+  "name": "lista-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-ex1": "tsc && clear && node ./build/ex1.js",
+    "start-ex2": "tsc && clear && node ./build/ex2.js",
+    "start-ex3": "tsc && clear && node ./build/ex3.js",
+    "start-ex4": "tsc && clear && node ./build/ex4.js",
+    "start-ex5": "tsc && clear && node ./build/ex5.js",
+    "start-ex6": "tsc && clear && node ./build/ex6.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.7.2"
+  }
+}

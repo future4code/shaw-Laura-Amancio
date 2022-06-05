@@ -13,19 +13,24 @@ app.get('/users', (req: Request, res: Response) => {
 })
 
 app.get('/users/saldo', (req: Request, res: Response) => {
+    let errorCode = 400
     try {
         const cpf: number = Number(req.query.cpf)
-        const acharCpf = users.find((user)=>{
-
-        })
-        const acharSaldo = users.find((user) => {
-            if(user.cpf === cpf) {
+        const nome = req.query.nome
+        const acharSaldo = users.filter((user)=>{
+            if(user.cpf === cpf && user.nome === nome){
                 return user
             }
+        }).map((user) =>{
+            return user.saldo
         })
+        if(acharSaldo.length === 0) {
+            errorCode = 404
+            throw new Error("Usuário não encontrado")
+        }
         res.status(200).send(acharSaldo)
     } catch (error:any) {
-        res.send(error.message)
+        res.status(errorCode).send(error.message)
     }
 })
 
@@ -42,24 +47,24 @@ app.post('/users/cadastro', (req: Request, res: Response) => {
         })
         let ano: number = hoje.getFullYear() - arrayNascimento[2]
         const mes: number = (hoje.getMonth() +1) - arrayNascimento[1]
-        // if(mes < 0) {
-        //     return ano + 1
-        // }
+        if(mes < 0) {
+            return ano + 1
+        }
         // if(mes === 0 && hoje.getDate() < arrayNascimento[0]){
         //     return ano + 1
         // }
         if(ano < 18){
             throw new Error("Precisa ser maior de 18 anos para abrir conta conosco.")
         }
-
-        // const findCpf = users.find((user) => {
-        //     if(user.cpf === req.body.cpf){
-        //         throw new Error("CPF já cadastrado")
-        //     }else{
-        //         [...users, req.body]
-        //     }
-        // })
-        const addUser = [...users, req.body]
+        const addUser = users.filter((user) =>{
+            if(user.cpf === cpf){
+                throw new Error("CPF já cadastrado")
+            }else{
+                [...users, req.body]
+            }
+        })
+        
+        // const addUser = 
         res.send(addUser).status(200)
     } catch (error: any) {
         switch(error.message){

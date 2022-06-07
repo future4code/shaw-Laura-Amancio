@@ -48,23 +48,25 @@ app.post('/users/cadastro', (req: Request, res: Response) => {
         let ano: number = hoje.getFullYear() - arrayNascimento[2]
         const mes: number = (hoje.getMonth() +1) - arrayNascimento[1]
         if(mes < 0) {
-            return ano + 1
+            ano = ano - 1
         }
-        // if(mes === 0 && hoje.getDate() < arrayNascimento[0]){
-        //     return ano + 1
-        // }
+        if(mes === 0 && hoje.getDate() < arrayNascimento[0]){
+            ano = ano - 1
+        }
+
         if(ano < 18){
             throw new Error("Precisa ser maior de 18 anos para abrir conta conosco.")
         }
-        const addUser = users.filter((user) =>{
-            if(user.cpf === cpf){
-                throw new Error("CPF já cadastrado")
-            }else{
-                [...users, req.body]
-            }
-        })
+
+        // const addUser = users.filter((user) =>{
+        //     if(user.cpf === cpf){
+        //         throw new Error("CPF já cadastrado")
+        //     }else{
+        //         [...users, req.body]
+        //     }
+        // })
         
-        // const addUser = 
+        const addUser =  [...users, req.body]
         res.send(addUser).status(200)
     } catch (error: any) {
         switch(error.message){

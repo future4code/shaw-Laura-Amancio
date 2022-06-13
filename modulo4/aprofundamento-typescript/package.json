@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "typescript": "^4.7.2"
+  },
+  "name": "aprofundamento-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ex1": "tsc && clear && node ./build/ex1.js",
+    "ex2": "tsc && clear && node ./build/ex2.js",
+    "ex3": "tsc && clear && node ./build/ex3.js",
+    "ex4": "tsc && clear && node ./build/ex4.js",
+    "ex5": "tsc && clear && node ./build/ex5.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

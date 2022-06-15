@@ -1,0 +1,3 @@
+GET http://localhost:3003/enderecos/13209355
+###
+POST http://localhost:3003/user/13209355?numero=2251&complemento=torre5

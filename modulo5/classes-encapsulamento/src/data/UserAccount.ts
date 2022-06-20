@@ -18,19 +18,17 @@ export default class UserAccount {
        this.age = age;
     }
     
-    public getCPF(): string {
-        return this.cpf
+    public getUser() {
+        return {
+            cpf: this.cpf,
+            name: this.name,
+            age: this.age,
+            balance: this.balance,
+            transactions: this.transactions
+        }
     }
-    public getName(): string {
-        return this.name
-    }
-    public getAge(): number {
-        return this.age
-    }
-    public getBalance(): number {
-        return this.balance
-    }
-    public getTransactions(): Transaction[] {
-        return this.transactions
+
+    public setTransaction(transaction: Transaction[]){
+        this.transactions = transaction
     }
   }

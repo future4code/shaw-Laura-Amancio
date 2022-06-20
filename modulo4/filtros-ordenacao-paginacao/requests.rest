@@ -1,0 +1,14 @@
+GET http://localhost:3003/users?name=darvas
+
+###
+
+GET http://localhost:3003/users/Teacher
+
+###
+GET http://localhost:3003/users2?filter=type
+
+###
+GET http://localhost:3003/users3?page=5
+
+###
+GET http://localhost:3003/users4?name=Soter

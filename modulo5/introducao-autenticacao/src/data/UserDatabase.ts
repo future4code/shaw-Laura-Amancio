@@ -17,12 +17,16 @@ export default class UserDatabase extends BaseDatabase {
             .select('*')
             .where({email})
 
-            console.log(result[0])
             return UserModel.todoUserModel(result[0])
         } catch (error:any) {
             throw new Error(error.sqlMessage || error.message);
         }
     }
 
+    public getById = async (id: string): Promise<UserModel> => {
+        const result = await BaseDatabase.connection("Users")
+            .where({ id }) 
+        return UserModel.todoUserModel(result[0])
+    }
 
 }

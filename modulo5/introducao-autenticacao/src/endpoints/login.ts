@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import UserDatabase from "../data/UserDatabase";
-import { UserModel } from "../model/UserModel";
 import { Authenticator } from "../services/Authenticator";
+import { HashManage } from "../services/HashManage";
 
 export default async function login(req: Request, res:Response){
     try {
@@ -18,12 +18,15 @@ export default async function login(req: Request, res:Response){
             throw new Error("Email ou senha inválidos");
         }
 
-        if(user.getPassword() !== password){
-            throw new Error("Email ou senha inválidos");
+        const hashManage = new HashManage()
+        const passIsCorrect: boolean = await hashManage.compare(password, user.getPassword())
+
+        if(!passIsCorrect){
+            throw new Error("Email ou senha inválidos")
         }
 
         const authenticator = new Authenticator()
-        const token = authenticator.generateToken({id: user.getId()})
+        const token = authenticator.generateToken({id: user.getId(), role: user.getRole()})
 
         res.send({token})
     } catch (error: any) {

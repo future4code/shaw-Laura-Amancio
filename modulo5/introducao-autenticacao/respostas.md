@@ -16,3 +16,9 @@ password VARCHAR(255) NOT NULL
 ### EXERCÍCIO 3
 
 **a)** Ela força o Typescript a tipar aquilo como string, uma vez que ele pode voltar como undefined, o que acaba gerando um errinho de tipagem que atrapalha a sequencia do código.
+
+## EXERCÍCIOS DE CRIPSTOGRAFIA
+
+### EXERCÍCIO 2
+
+**c)** Nesse momento não, pois não é usado criptografia de senha nele, apenas o token.

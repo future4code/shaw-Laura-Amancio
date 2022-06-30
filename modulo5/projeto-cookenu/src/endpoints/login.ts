@@ -26,7 +26,7 @@ export default async function login (req: Request, res: Response) {
         }
 
         const authenticator = new Authenticator()
-        const token = authenticator.generateToken({id: user.getId()})
+        const token = authenticator.generateToken({id: user.getId(), role: user.getRole()})
 
         res.status(200).send({token})
     } catch (error: any) {

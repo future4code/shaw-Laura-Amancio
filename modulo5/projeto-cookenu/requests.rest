@@ -2,9 +2,10 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-    "email": "rodrigo@gmail.com",
-    "name": "rodrigo",
-    "password": "socorrodeus"
+    "email": "laura@gmail.com",
+    "name": "laura",
+    "password": "socorrodeus",
+    "role": "ADMIN"
 }
 
 ###
@@ -12,6 +13,35 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-    "email": "jurema@gmail.com",
+    "email": "rodrigo@gmail.com",
     "password": "socorrodeus"
 }
+
+###
+
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkN2ViZTQzLThjNjEtNGZmZC1iNWU3LWExYWMxY2ZmYTc2NyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjYxNDM1OCwiZXhwIjoxNjU2NjE3OTU4fQ.v1uYV_7d1Yz0DRnk8xEINoYE8d5BT9AKQbmFSFBZfO0
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YzE2ZWI2LTg3NmItNDQ3Yy1hYmY2LTkzYjgyOGU1YzQxYSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTY2MTQzODgsImV4cCI6MTY1NjYxNzk4OH0.s66qpx_QSqqmuG9hRKfL9XAndLmue96f87J8A00uoHw
+GET http://localhost:3003/user/profile
+authorization: {{token}}
+
+###
+POST http://localhost:3003/user/recipe/1d7ebe43-8c61-4ffd-b5e7-a1ac1cffa767
+authorization: {{token}}
+Content-Type: application/json
+
+{
+    "title": "Milho cozido",
+    "description": "Coloque o milho na agua e coloque para ferver, espere até cozinhar"
+}
+
+###
+GET http://localhost:3003/user/profile/1d7ebe43-8c61-4ffd-b5e7-a1ac1cffa767
+authorization: {{token}}
+
+###
+GET http://localhost:3003/recipes/5b5451ba-746a-4024-8cf4-4ab2733b3aef
+authorization: {{token}}
+
+###
+GET http://localhost:3003/feed/recipes
+authorization: {{token}}

@@ -22,4 +22,16 @@ export default class UserDatabase extends BaseDatabase {
             throw new Error(error.sqlmessage || error.message);
         }
     }
+
+    public async getById(id: string) {
+        try {
+            const result = await BaseDatabase.connection("CookUsers")
+            .select('*')
+            .where({id})
+
+            return UserModel.todoUserModel(result[0])
+        } catch (error: any) {
+            throw new Error(error.sqlmessage || error.message)
+        }
+    }
 }

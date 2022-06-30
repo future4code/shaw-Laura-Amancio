@@ -1,0 +1,25 @@
+###
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "email": "plota@gmail.com",
+    "password": "jesusqisso",
+    "role": "NORMAL"
+}
+
+###
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "ploto@gmail.com",
+    "password": "jesusqisso"
+}
+
+###
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIyNDY0ODgxLTVlMjAtNDI1NS1iYjAyLWRmZDhhY2YzMzQ1YSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTY0NDYxOTEsImV4cCI6MTY1NjQ0OTc5MX0.uxyqNtJ9q2dNZl02R42r2O0oSwyw_a0tabsdwz6i4n4
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU4NTRkNTZmLTdkM2EtNDEzYi04NDc0LTNhNTU4Yjc5NDdjNCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjQ0NjE1NSwiZXhwIjoxNjU2NDQ5NzU1fQ.S0xdEQYzBBiT4yuOmo4OU-esrqW1_MsgP2c0svcS9xA
+
+GET http://localhost:3003/user/profile
+auth: {{token}}

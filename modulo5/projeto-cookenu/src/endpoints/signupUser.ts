@@ -5,7 +5,7 @@ import { UserModel } from "../models/UserModel";
 import { Generate } from "../services/Generate";
 import { HashManage } from "../services/HashManage";
 
-export default async function createUser (req: Request, res: Response) {
+export default async function createUser (req: Request, res: Response): Promise<void> {
     try {
         const {email, name, password, role} = req.body
 
@@ -43,6 +43,6 @@ export default async function createUser (req: Request, res: Response) {
             token
         })
     } catch (error: any) {
-        res.send(error.sqlmessage || error.message)
+        res.send(error.message)
     }
 }

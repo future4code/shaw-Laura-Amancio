@@ -7,10 +7,10 @@ import login from "./endpoints/login";
 import createUser from "./endpoints/signupUser";
 import getAllRecipes from './endpoints/getAllRecipes'
 
-app.post("/users/signup", createUser)
-app.post("/users/login", login)
-app.post("/user/recipe/:id", createRecepie)
 app.get("/user/profile", getProfile)
 app.get("/user/profile/:id", getOthersProfile)
 app.get("/recipes/:id", getRecipeByID)
 app.get("/feed/recipes", getAllRecipes)
+app.post("/users/signup", createUser)
+app.post("/users/login", login)
+app.post("/user/recipe/:id", createRecepie)

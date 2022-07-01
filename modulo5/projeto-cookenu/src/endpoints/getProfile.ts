@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import UserDatabase from "../data/UserDatabase";
 import { Authenticator } from "../services/Authenticator";
 
-export default async function getProfile(req: Request, res: Response){
+export default async function getProfile(req: Request, res: Response): Promise<void>{
     try {
         const token = req.headers.authorization as string
         if(!token){
@@ -26,6 +26,6 @@ export default async function getProfile(req: Request, res: Response){
             }
         })
     } catch (error: any) {
-        res.send(error.sqlmessage || error.message)
+        res.send(error.message)
     }
 }

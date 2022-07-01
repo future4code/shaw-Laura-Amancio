@@ -4,7 +4,7 @@ import RecepieModel from "../models/RecepiesModel";
 import { Authenticator } from "../services/Authenticator";
 import { Generate } from "../services/Generate";
 
-export default async function createRecepie(req: Request, res: Response) {
+export default async function createRecepie(req: Request, res: Response): Promise<void> {
     try {
         const token = req.headers.authorization
 
@@ -43,6 +43,6 @@ export default async function createRecepie(req: Request, res: Response) {
             criation_date: dateString,
         }})
     } catch (error: any) {
-        res.send(error.sqlmessage || error.message)
+        res.send(error.message)
     }
 }

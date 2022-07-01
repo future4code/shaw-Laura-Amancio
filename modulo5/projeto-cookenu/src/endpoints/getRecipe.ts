@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import RecepieDatabse from "../data/RecepieDatabase";
 import { Authenticator } from "../services/Authenticator";
 
-export default async function getRecipeByID(req: Request, res: Response){
+export default async function getRecipeByID(req: Request, res: Response): Promise<void> {
     try {
        const token = req.headers.authorization
        
@@ -32,6 +32,6 @@ export default async function getRecipeByID(req: Request, res: Response){
        })
 
     } catch (error: any) {
-        res.send(error.sqlmessage || error.message)
+        res.send(error.message)
     }
 }

@@ -2,8 +2,8 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-    "email": "laura@gmail.com",
-    "name": "laura",
+    "email": "clara@gmail.com",
+    "name": "Maria Clara",
     "password": "socorrodeus",
     "role": "ADMIN"
 }
@@ -13,29 +13,29 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-    "email": "rodrigo@gmail.com",
+    "email": "roro@gmail.com",
     "password": "socorrodeus"
 }
 
 ###
 
-@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkN2ViZTQzLThjNjEtNGZmZC1iNWU3LWExYWMxY2ZmYTc2NyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjYxNDM1OCwiZXhwIjoxNjU2NjE3OTU4fQ.v1uYV_7d1Yz0DRnk8xEINoYE8d5BT9AKQbmFSFBZfO0
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM1YzE2ZWI2LTg3NmItNDQ3Yy1hYmY2LTkzYjgyOGU1YzQxYSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTY2MTQzODgsImV4cCI6MTY1NjYxNzk4OH0.s66qpx_QSqqmuG9hRKfL9XAndLmue96f87J8A00uoHw
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwN2JiNDEzLWVmMjQtNDk1MC04YmVlLWY4ZGJhMmM5MzcxMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjY5NDI2MSwiZXhwIjoxNjU2Njk3ODYxfQ.wzKWdnoZ9Tc0xW9RaLGnYJZnTeWyug82GCAAsot_Mpo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNTgyYjdmLWE1N2MtNDZmNi04MDYxLWJmNDNlN2I5Njg3YSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTY2OTk0NTUsImV4cCI6MTY1NjcwMzA1NX0.avTETfLvUib3rnqA58kJlJOS7jXRfGYjYy3V2bTqj64
 GET http://localhost:3003/user/profile
 authorization: {{token}}
 
 ###
-POST http://localhost:3003/user/recipe/1d7ebe43-8c61-4ffd-b5e7-a1ac1cffa767
+POST http://localhost:3003/user/recipe/5e582b7f-a57c-46f6-8061-bf43e7b9687a
 authorization: {{token}}
 Content-Type: application/json
 
 {
-    "title": "Milho cozido",
-    "description": "Coloque o milho na agua e coloque para ferver, espere até cozinhar"
+    "title": "Abacate com açúcar",
+    "description": "Amasse o abacate, coloque açúcar e coma"
 }
 
 ###
-GET http://localhost:3003/user/profile/1d7ebe43-8c61-4ffd-b5e7-a1ac1cffa767
+GET http://localhost:3003/user/profile/5e582b7f-a57c-46f6-8061-bf43e7b9687a
 authorization: {{token}}
 
 ###

@@ -1,5 +1,5 @@
 import * as jwt from "jsonwebtoken"
-import { authenticatorData } from "../types/AuthenticatorData"
+import { authenticatorData } from "../types/authenticatorData"
 
 export class Authenticator {
     private static EXPIRES_IN = "2h"
@@ -8,9 +8,10 @@ export class Authenticator {
         const token = jwt.sign(payload,
             process.env.JWT_KEY as string,
             {
-                expiresIn: Authenticator.EXPIRES_IN
+                // expiresIn: Authenticator.EXPIRES_IN
             })
         
             return token
     }
+
 }

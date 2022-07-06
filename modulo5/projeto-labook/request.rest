@@ -2,7 +2,16 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-    "name": "sara",
-    "email": "sara@gmail.com",
+    "name": "chico",
+    "email": "chico@gmail.com",
+    "password": "socorrodeus"
+}
+
+###
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "chico@gmail.com",
     "password": "socorrodeus"
 }

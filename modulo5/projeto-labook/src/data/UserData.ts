@@ -20,6 +20,7 @@ export default class UserData extends BaseDatabase{
            .where({email})
 
            return result[0]
+
         } catch (error: any) {
             throw new Error(error.sqlmessage || error.message)
         }

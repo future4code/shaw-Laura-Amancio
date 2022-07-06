@@ -7,4 +7,9 @@ export class HashManage {
         const result = await bcrypt.hash(pass, salt)
         return result
     }
+
+    public async compare(password: string, hash: string) {
+        const result = bcrypt.compare(password, hash)
+        return result
+    }
 }

@@ -38,4 +38,18 @@ export default class PostBusiness{
 
         return newPost
     }
+
+    getByID = async(id: string, token: string) => {
+        
+        const idPost = id
+        const isValidToken = this.authenticatorData.getData(token)
+        if(!isValidToken){
+            throw new Error("Token inválido, verificar login")
+        }
+        if(!idPost) {
+            throw new Error("Post não encontrado")
+        }
+        const result = await this.postData.getByID(idPost)
+        return result
+    }
 }

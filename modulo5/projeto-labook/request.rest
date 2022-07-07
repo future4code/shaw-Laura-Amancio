@@ -26,6 +26,10 @@ authorization: {{token}}
 
 {
     "picture": "teste",
-    "description": "Euzinha",
+    "description": "lindo dia",
     "type": "NORMAL"
 }
+
+###
+GET http://localhost:3003/users/post/38e162b2-c48e-48cd-8d11-dfd91b5b8579
+authorization: {{token}}

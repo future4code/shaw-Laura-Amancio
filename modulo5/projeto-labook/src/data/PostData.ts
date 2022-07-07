@@ -12,4 +12,16 @@ export default class PostData extends BaseDatabase {
             throw new Error(error.sqlmessage || error.message)
         }
     }
+
+    public async getByID(id: string) {
+        try {
+            const result = await BaseDatabase.connection(this.TABLE_NAME)
+            .select('picture', 'description', 'criation_date', 'type')
+            .where({id})
+
+            return result[0]
+        } catch (error: any) {
+            throw new Error(error.sqlmessage || error.message)
+        }
+    }
 }

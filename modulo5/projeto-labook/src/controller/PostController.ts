@@ -1,3 +1,4 @@
+import { IdGenerator } from "./../services/IdGenerate";
 import { Request, Response } from "express";
 import PostBusiness from "../business/PostBusiness";
 import { inputCreatePostDTO } from "../types/inputCreatePostDTO";
@@ -23,6 +24,18 @@ export default class PostController{
         try {
             await this.postBusiness.createPost(input, token)
             res.status(201).send("Post criado com sucesso")
+        } catch (error: any) {
+            res.send(error.sqlmessage || error.message)
+        }
+    }
+
+    getByID = async(req:Request, res: Response) => {
+        const id = req.params.id 
+        const token = req.headers.authorization as string
+
+        try {
+            const result = await this.postBusiness.getByID(id, token)
+            res.status(200).send(result)
         } catch (error: any) {
             res.send(error.sqlmessage || error.message)
         }

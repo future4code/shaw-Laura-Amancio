@@ -15,3 +15,17 @@ Content-Type: application/json
     "email": "chico@gmail.com",
     "password": "socorrodeus"
 }
+
+
+###
+@token = eyJhbGciOiJIUzI1NiJ9.YjE3NTU3OWUtZDNhMC00YjRlLWJlN2EtNDVkYjkwNmZkMmI4.nMksycJvHOfJvHbvJNBj-WuC0BbOM0e-oqwCi1kv9qc
+
+POST http://localhost:3003/users/post/97a6dcd1-8966-4f7b-a010-1f2974aa840a
+Content-Type: application/json
+authorization: {{token}}
+
+{
+    "picture": "teste",
+    "description": "Euzinha",
+    "type": "NORMAL"
+}

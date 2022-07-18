@@ -3,7 +3,7 @@ import UserDatabase from "../data/UserDatabase";
 import { Authenticator } from "../services/Authenticator";
 import { HashManage } from "../services/HashManage";
 
-export default async function login (req: Request, res: Response) {
+export default async function login (req: Request, res: Response): Promise<void> {
     try {
         const {email, password} = req.body
 
@@ -26,10 +26,10 @@ export default async function login (req: Request, res: Response) {
         }
 
         const authenticator = new Authenticator()
-        const token = authenticator.generateToken({id: user.getId()})
+        const token = authenticator.generateToken({id: user.getId(), role: user.getRole()})
 
         res.status(200).send({token})
     } catch (error: any) {
-        res.send(error.sqlmessage || error.message)
+        res.send(error.message)
     }
 }

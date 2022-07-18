@@ -23,7 +23,7 @@ export default class RecepieModel {
         return this.creator_id
     }
 
-    public static todoRepecieModel(result: any) {
+    public static todoRecipeModel(result: any) {
         return new RecepieModel(result.id, result.title, result.description, result.creation_date, result.creator_id)
     }
 

@@ -2,9 +2,10 @@ POST http://localhost:3003/users/signup
 Content-Type: application/json
 
 {
-    "email": "rodrigo@gmail.com",
-    "name": "rodrigo",
-    "password": "socorrodeus"
+    "email": "clara@gmail.com",
+    "name": "Maria Clara",
+    "password": "socorrodeus",
+    "role": "ADMIN"
 }
 
 ###
@@ -12,6 +13,35 @@ POST http://localhost:3003/users/login
 Content-Type: application/json
 
 {
-    "email": "jurema@gmail.com",
+    "email": "roro@gmail.com",
     "password": "socorrodeus"
 }
+
+###
+
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIwN2JiNDEzLWVmMjQtNDk1MC04YmVlLWY4ZGJhMmM5MzcxMSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NjY5NDI2MSwiZXhwIjoxNjU2Njk3ODYxfQ.wzKWdnoZ9Tc0xW9RaLGnYJZnTeWyug82GCAAsot_Mpo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNTgyYjdmLWE1N2MtNDZmNi04MDYxLWJmNDNlN2I5Njg3YSIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NTY2OTk0NTUsImV4cCI6MTY1NjcwMzA1NX0.avTETfLvUib3rnqA58kJlJOS7jXRfGYjYy3V2bTqj64
+GET http://localhost:3003/user/profile
+authorization: {{token}}
+
+###
+POST http://localhost:3003/user/recipe/5e582b7f-a57c-46f6-8061-bf43e7b9687a
+authorization: {{token}}
+Content-Type: application/json
+
+{
+    "title": "Abacate com açúcar",
+    "description": "Amasse o abacate, coloque açúcar e coma"
+}
+
+###
+GET http://localhost:3003/user/profile/5e582b7f-a57c-46f6-8061-bf43e7b9687a
+authorization: {{token}}
+
+###
+GET http://localhost:3003/recipes/5b5451ba-746a-4024-8cf4-4ab2733b3aef
+authorization: {{token}}
+
+###
+GET http://localhost:3003/feed/recipes
+authorization: {{token}}

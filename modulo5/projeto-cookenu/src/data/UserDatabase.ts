@@ -7,7 +7,7 @@ export default class UserDatabase extends BaseDatabase {
             await BaseDatabase.connection("CookUsers")
             .insert(user)
         } catch (error: any) {
-            throw new Error(error.sqlmessage || error.message)
+            throw new Error("Erro inesperado")
         }
     }
 
@@ -19,7 +19,19 @@ export default class UserDatabase extends BaseDatabase {
 
             return result[0] ? UserModel.todoUserModel(result[0]) : null
         } catch (error: any) {
-            throw new Error(error.sqlmessage || error.message);
+            throw new Error("Erro inesperado");
+        }
+    }
+
+    public async getById(id: string) {
+        try {
+            const result = await BaseDatabase.connection("CookUsers")
+            .select('*')
+            .where({id})
+
+            return UserModel.todoUserModel(result[0])
+        } catch (error: any) {
+            throw new Error("Erro inesperado")
         }
     }
 }

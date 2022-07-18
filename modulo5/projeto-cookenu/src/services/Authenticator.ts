@@ -1,7 +1,8 @@
 import * as jwt from "jsonwebtoken"
 
 type AuthenticatorData = {
-    id: string
+    id: string,
+    role: string
 }
 
 export class Authenticator {

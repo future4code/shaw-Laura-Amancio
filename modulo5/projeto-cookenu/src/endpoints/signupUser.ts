@@ -5,9 +5,9 @@ import { UserModel } from "../models/UserModel";
 import { Generate } from "../services/Generate";
 import { HashManage } from "../services/HashManage";
 
-export default async function createUser (req: Request, res: Response) {
+export default async function createUser (req: Request, res: Response): Promise<void> {
     try {
-        const {email, name, password} = req.body
+        const {email, name, password, role} = req.body
 
         if(!email || !name || !password) {
             res.statusCode = 422
@@ -31,18 +31,18 @@ export default async function createUser (req: Request, res: Response) {
         const hashManage = new HashManage()
         const hashPassword = await hashManage.hashPassword(password)
 
-        const newUser = new UserModel(id, email, name, hashPassword)
+        const newUser = new UserModel(id, email, name, hashPassword, role)
 
 
         await userDB.createUser(newUser)
 
         const authenticator = new Authenticator()
-        const token = authenticator.generateToken({id})
+        const token = authenticator.generateToken({id, role})
 
         res.status(201).send({
             token
         })
     } catch (error: any) {
-        res.send(error.sqlmessage || error.message)
+        res.send(error.message)
     }
 }

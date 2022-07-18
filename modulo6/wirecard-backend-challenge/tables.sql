@@ -1,0 +1,7 @@
+-- Active: 1657806752877@@35.226.146.116@3306@shaw-21814956-amancio
+CREATE TABLE users_wirecard(
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,    
+    cpf INT UNIQUE NOT NULL
+);

@@ -1,0 +1,35 @@
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "chico",
+    "email": "chico@gmail.com",
+    "password": "socorrodeus"
+}
+
+###
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "chico@gmail.com",
+    "password": "socorrodeus"
+}
+
+
+###
+@token = eyJhbGciOiJIUzI1NiJ9.YjE3NTU3OWUtZDNhMC00YjRlLWJlN2EtNDVkYjkwNmZkMmI4.nMksycJvHOfJvHbvJNBj-WuC0BbOM0e-oqwCi1kv9qc
+
+POST http://localhost:3003/users/post/97a6dcd1-8966-4f7b-a010-1f2974aa840a
+Content-Type: application/json
+authorization: {{token}}
+
+{
+    "picture": "teste",
+    "description": "lindo dia",
+    "type": "NORMAL"
+}
+
+###
+GET http://localhost:3003/users/post/38e162b2-c48e-48cd-8d11-dfd91b5b8579
+authorization: {{token}}

@@ -22,3 +22,9 @@ export class BuyersModel {
         return new BuyersModel(buyer.id, buyer.name, buyer.email, buyer.cpf);
     }
 }
+
+export interface InputAddBuyerDTO{
+    name: string,
+    email: string,
+    cpf: string
+}

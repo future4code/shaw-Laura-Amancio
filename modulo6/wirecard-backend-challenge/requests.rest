@@ -1,0 +1,25 @@
+POST http://localhost:3003/buyers 
+Content-Type: application/json
+
+{
+    "name": "Laura",
+    "email": "Laura@gmail.com",
+    "cpf": "74185296332"
+}
+###
+POST http://localhost:3003/clients
+Content-Type: application/json
+###
+
+POST http://localhost:3003/payment/b624c8c8-5531-42b8-9e73-38ce538f7383/52868edf-ca75-494f-a0ac-17348bb02fb4
+Content-Type: application/json
+
+{
+    "amount": 300,
+    "type": "BOLETO",
+    "status": "A_PAGAR",
+    "card_holder": "", 
+    "card_number": , 
+    "card_expiration_date": "",
+    "card_cvv":
+}

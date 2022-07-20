@@ -3,7 +3,7 @@ CREATE TABLE buyers_wirecard(
     id VARCHAR(255) PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,    
-    cpf INT UNIQUE NOT NULL
+    cpf VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE clients_wirecard(
@@ -12,9 +12,9 @@ CREATE TABLE clients_wirecard(
 
 CREATE TABLE payment_wirecard(
     id VARCHAR(255) PRIMARY KEY,
-    client_id VARCHAR(255) UNIQUE NOT NULL,
+    client_id VARCHAR(255) NOT NULL,
     FOREIGN KEY (client_id) REFERENCES clients_wirecard(id),
-    buyer_id VARCHAR(255) UNIQUE NOT NULL,
+    buyer_id VARCHAR(255) NOT NULL,
     FOREIGN KEY (buyer_id) REFERENCES buyers_wirecard(id),
     amount FLOAT NOT NULL,
     type ENUM("CARD", "BOLETO") NOT NULL,
@@ -29,3 +29,8 @@ CREATE TABLE card_wirecard(
     card_expiration_date VARCHAR(255) NOT NULL,
     card_cvv INT NOT NULL 
 );
+
+SELECT * FROM payment_wirecard;
+
+INSERT INTO clients_wirecard
+VALUES ("b624c8c8-5531-42b8-9e73-38ce538f7383");

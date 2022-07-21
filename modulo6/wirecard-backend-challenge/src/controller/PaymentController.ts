@@ -1,13 +1,14 @@
-import { paymentType } from "./../models/PaymentModel";
+import { inputCardDTO, inputPaymentDTO, paymentType } from "./../models/PaymentModel";
 import { Request, Response } from "express";
 import PaymentBusiness from "../business/PaymentBusiness";
-import { inputGeneratePaymentDTO } from "../models/PaymentModel";
 import CardBusiness from "../business/CardBusiness";
+import BuyersBusiness from "../business/BuyersBusiness";
 
 export default class PaymentController {
     constructor(
         private paymentBusiness = new PaymentBusiness(),
-        private cardBusiness = new CardBusiness()
+        private cardBusiness = new CardBusiness(),
+        private buyerBusiness = new BuyersBusiness()
     ){}
 
     public generatePayment = async(req: Request, res: Response) => {
@@ -17,26 +18,26 @@ export default class PaymentController {
             const {amount, type, status, card_holder, card_number, card_expiration_date, card_cvv} = req.body
             
             if(type === paymentType.CARD){
-                const inputCard: inputGeneratePaymentDTO = {
+                const inputCard: inputCardDTO = {
                     buyer_id,
                     card_holder,
                     card_number,
                     card_expiration_date,
                     card_cvv
                 }
-                const inputPayment = {
+                const inputPayment: inputPaymentDTO = {
                     client_id,
                     buyer_id,
                     type,
                     amount,
                     status,
                 }
-                const result = await this.cardBusiness.addCard(inputCard)
+                const result = await this.cardBusiness.addCard(inputCard, inputPayment)
                 await this.paymentBusiness.generatePayment(inputPayment)
 
                 res.send(result)
             }else{
-                const inputBoleto: inputGeneratePaymentDTO = {
+                const inputBoleto: inputPaymentDTO = {
                     client_id,
                     buyer_id,
                     type,
@@ -48,6 +49,21 @@ export default class PaymentController {
                 res.status(201).send({message: `Boleto number: ${boletoNumber}`})
             }
 
+        } catch (error: any) {
+            res.send(error.message)
+        }
+    }
+
+    public getPaymentById = async(req: Request, res: Response) => {
+        try {
+            const id = req.params.payment_id
+            const buyerId = req.params.buyer_id
+            const paymentResult = await this.paymentBusiness.getPaymentById(id, buyerId)
+            const buyerResult = await this.buyerBusiness.getById(buyerId)
+            res.status(200).send({
+                paymentData: paymentResult,
+                buyerData: buyerResult
+            })
         } catch (error: any) {
             res.send(error.message)
         }

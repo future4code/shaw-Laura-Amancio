@@ -1,5 +1,6 @@
 export default class CardModel {
     constructor(
+        private id: string,
         private buyer_id: string,
         private card_holder: string,
         private card_number: number,

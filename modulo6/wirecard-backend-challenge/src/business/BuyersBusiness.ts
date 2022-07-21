@@ -29,4 +29,17 @@ export default class BuyersBusiness {
             throw new Error(error.message)
         }
     }
+
+    public getById = async(id:string) => {
+        try {
+            const result = await this.buyerData.getByID(id)
+            if(!result) {
+                throw new Error("Buyer not found")
+            }
+
+            return result
+        } catch (error:any) {
+            throw new Error(error.message)
+        }
+    }
 }

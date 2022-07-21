@@ -17,19 +17,26 @@ CREATE TABLE payment_wirecard(
     buyer_id VARCHAR(255) NOT NULL,
     FOREIGN KEY (buyer_id) REFERENCES buyers_wirecard(id),
     amount FLOAT NOT NULL,
-    type ENUM("CARD", "BOLETO") NOT NULL,
-    status ENUM ("A_PAGAR", "PAGO") NOT NULL DEFAULT "A_PAGAR"
+    type ENUM("CARTÃO DE CRÉDITO", "BOLETO") NOT NULL,
+    status ENUM ("A PAGAR", "PAGO") NOT NULL DEFAULT "A PAGAR"
 );
 
 CREATE TABLE card_wirecard(
-    buyer_id VARCHAR(255) UNIQUE NOT NULL,
+    id VARCHAR(255) PRIMARY KEY,
+    buyer_id VARCHAR(255) NOT NULL,
     FOREIGN KEY (buyer_id) REFERENCES buyers_wirecard(id),
-    card_holder VARCHAR(255) NOT NULL UNIQUE,
-    card_number INT NOT NULL UNIQUE,
+    card_holder VARCHAR(255) NOT NULL,
+    card_number INT NOT NULL,
     card_expiration_date VARCHAR(255) NOT NULL,
     card_cvv INT NOT NULL 
 );
 
+SELECT * FROM payment_wirecard;
+
+DROP TABLE payment_wirecard;
+
+SELECT * FROM clients_wirecard;
+SELECT * FROM buyers_wirecard;
 SELECT * FROM payment_wirecard;
 
 INSERT INTO clients_wirecard

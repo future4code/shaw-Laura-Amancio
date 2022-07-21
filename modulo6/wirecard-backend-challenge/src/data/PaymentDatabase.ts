@@ -13,4 +13,17 @@ export default class PaymentDatabase extends BaseDatabase {
             throw new Error(error.sqlmessage || error.message)
         }
     }
+
+    public async getPaymentById(id: string): Promise<PaymentModel> {
+        try {
+
+            const result = await this.getConnection()
+            .select()
+            .from(this.TABLE_NAME)
+            .where({id})
+            return result[0]
+        } catch (error: any) {
+            throw new Error(error.sqlmessage || error.message)
+        }
+    }
 }

@@ -1,4 +1,4 @@
-import PaymentModel, { inputGeneratePaymentDTO, paymentType } from "./../models/PaymentModel";
+import PaymentModel, { paymentType } from "./../models/PaymentModel";
 import PaymentDatabase from "../data/PaymentDatabase";
 import { IdGenerator } from "../services/IdGenerator";
 import ClientDatabase from "../data/ClientDatabase";
@@ -14,25 +14,30 @@ export default class PaymentBusiness {
 
     public generatePayment = async(input:any) => {
         try {
-            const {client_id, buyer_id, amount, type, status} = input
+            const {client_id, buyer_id, amount, type} = input
+            let {status} = input
 
-            // Valildação de client e buyer existentes
             const validClient = await this.clientData.getByID(client_id)
-            console.log(validClient, "client")
             if(!validClient){
                 throw new Error("This Client doesn't exist")
             }
 
             const validBuyer = await this.buyerData.getByID(buyer_id)
-            console.log(validBuyer, "buyer")
             if(!validBuyer){
                 throw new Error("This Buyer doesn't exist")
             }
 
-            if(!client_id ||  !buyer_id || !amount || !type || !status){
+            if(!client_id ||  !buyer_id || !amount || !type ){
                 throw new Error("fill in all fields")
             }
 
+            if(!status){
+                status = "A PAGAR"
+            }
+
+            if(type === paymentType.CARD){
+                status = "PAGO"
+            }
 
             const id = this.idGenerator.generate()
 
@@ -50,7 +55,21 @@ export default class PaymentBusiness {
 
             return newPayment
         } catch (error: any) {
-            throw new Error(error.message);
+            throw new Error(error.message)
+        }
+    }
+
+    public getPaymentById = async(id: string, buyerId: string) => {
+        try {
+            const validBuyer = await this.buyerData.getByID(buyerId)
+            if(!validBuyer){
+            throw new Error("Buyer not found")
+            }
+
+            const result = await this.paymentData.getPaymentById(id)
+            return (result)
+        } catch (error: any) {
+            throw new Error(error.message)
         }
     }
 }

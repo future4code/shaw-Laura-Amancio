@@ -1,5 +1,5 @@
 export enum paymentType {
-    CARD = "CARD",
+    CARD = "CARTÃO DE CRÉDITO",
     BOLETO = "BOLETO"
 }
 export enum paymentStatus {
@@ -40,14 +40,19 @@ export default class PaymentModel {
     }
 }
 
-export interface inputGeneratePaymentDTO {
-    client_id?: string,
+
+export interface inputCardDTO {
     buyer_id: string,
-    amount?: number,
-    type?: paymentType,
+    card_holder: string,
+    card_number: string,
+    card_expiration_date: string,
+    card_cvv: number
+}
+
+export interface inputPaymentDTO {
+    client_id: string,
+    buyer_id: string,
+    amount: number,
+    type: paymentType,
     status?: paymentStatus,
-    card_holder?: string,
-    card_number?: string,
-    card_expiration_date?: string,
-    card_cvv?: number
 }

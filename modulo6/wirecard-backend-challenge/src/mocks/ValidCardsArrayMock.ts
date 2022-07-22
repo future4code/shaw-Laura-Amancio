@@ -1,0 +1,1 @@
+export const validCards: number[]  = [123, 456, 789, 963, 852, 741, 147, 258, 369]

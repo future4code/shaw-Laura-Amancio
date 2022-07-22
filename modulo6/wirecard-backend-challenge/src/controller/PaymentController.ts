@@ -1,4 +1,5 @@
-import { inputCardDTO, inputPaymentDTO, paymentType } from "./../models/PaymentModel";
+import { inputCardDTO } from "./../models/CardModel";
+import { inputPaymentDTO, paymentType } from "./../models/PaymentModel";
 import { Request, Response } from "express";
 import PaymentBusiness from "../business/PaymentBusiness";
 import CardBusiness from "../business/CardBusiness";
@@ -50,7 +51,7 @@ export default class PaymentController {
             }
 
         } catch (error: any) {
-            res.send(error.message)
+            res.status(error.statusCode || 400).send({ message: error.message })
         }
     }
 
@@ -65,7 +66,7 @@ export default class PaymentController {
                 buyerData: buyerResult
             })
         } catch (error: any) {
-            res.send(error.message)
+            res.status(error.statusCode || 400).send({ message: error.message })
         }
     }
 }

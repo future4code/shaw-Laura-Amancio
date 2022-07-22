@@ -3,7 +3,7 @@ export enum paymentType {
     BOLETO = "BOLETO"
 }
 export enum paymentStatus {
-    A_PAGAR = "A_PAGAR",
+    A_PAGAR = "A PAGAR",
     PAGO = "PAGO"
 }
 
@@ -41,18 +41,10 @@ export default class PaymentModel {
 }
 
 
-export interface inputCardDTO {
-    buyer_id: string,
-    card_holder: string,
-    card_number: string,
-    card_expiration_date: string,
-    card_cvv: number
-}
-
 export interface inputPaymentDTO {
     client_id: string,
     buyer_id: string,
     amount: number,
     type: paymentType,
-    status?: paymentStatus,
+    status: paymentStatus,
 }

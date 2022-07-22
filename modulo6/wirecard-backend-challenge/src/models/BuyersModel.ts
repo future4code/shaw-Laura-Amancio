@@ -3,7 +3,7 @@ export class BuyersModel {
         private id: string,
         private name: string,
         private email: string,
-        private cpf: string
+        private cpf: number
     ){}
 
     public getId() {
@@ -26,5 +26,5 @@ export class BuyersModel {
 export interface InputAddBuyerDTO{
     name: string,
     email: string,
-    cpf: string
+    cpf: number
 }

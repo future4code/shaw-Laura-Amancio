@@ -5,7 +5,6 @@ export default class ClientDatabase extends BaseDatabase{
     protected TABLE_NAME = "clients_wirecard"
 
     public async addClient(input: string): Promise<void> {
-        console.log(input)
         try {
             await this.getConnection()
             .insert(input)

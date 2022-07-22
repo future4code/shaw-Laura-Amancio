@@ -1,6 +1,8 @@
 import BuyerDatabase from "../data/BuyerDatabase";
+import { CustomError } from "../error/BaseCustomError";
 import { BuyersModel, InputAddBuyerDTO } from "../models/BuyersModel";
 import { IdGenerator } from "./../services/IdGenerator";
+
 export default class BuyersBusiness {
     constructor(
         private idGenerator = new IdGenerator(),
@@ -12,7 +14,22 @@ export default class BuyersBusiness {
             const {name, email, cpf} = input
 
             if(!name || !email || !cpf){
-                throw new Error("Preencha todos os campos corretamente")
+                throw new CustomError(422, "Fill in all the fields")
+            }
+
+            if(!email.includes("@")){
+                throw new CustomError(400, "Invalid email format")
+            }
+
+            if(cpf.toString().length !== 11){
+                throw new CustomError(400, "Invalid format of CPF")
+            }
+
+            const registeredEmail = await this.buyerData.getByEmail(email)
+            const registeredCpf = await this.buyerData.getByCpf(cpf)
+
+            if(registeredCpf || registeredEmail){
+                throw new CustomError(409, "Email or CPF already registered")
             }
 
             const id: string = this.idGenerator.generate()
@@ -26,7 +43,7 @@ export default class BuyersBusiness {
 
             await this.buyerData.addBuyer(newBuyer)
         } catch (error: any) {
-            throw new Error(error.message)
+            throw new CustomError(400, error.message)
         }
     }
 
@@ -39,7 +56,7 @@ export default class BuyersBusiness {
 
             return result
         } catch (error:any) {
-            throw new Error(error.message)
+            throw new CustomError(400, error.message)
         }
     }
 }

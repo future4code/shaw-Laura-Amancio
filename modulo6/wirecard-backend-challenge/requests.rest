@@ -2,25 +2,25 @@ POST http://localhost:3003/buyers
 Content-Type: application/json
 
 {
-    "name": "Roberval",
-    "email": "roro@gmail.com",
-    "cpf": "85278995188"
+    "name": "Rogério",
+    "email": "rogerio@gmail.com",
+    "cpf": 78945614587
 }
 ###
 POST http://localhost:3003/clients
 Content-Type: application/json
 ###
 
-POST http://localhost:3003/payment/b624c8c8-5531-42b8-9e73-38ce538f7383/da4ad440-3043-4999-9ea6-ad49c0ae333d
+POST http://localhost:3003/payment/c631ee49-04a4-465d-ae57-dda0024fa12d/0f6469af-2518-49ac-8e64-02b495423046
 Content-Type: application/json
 
 {
-    "amount": 580,
-    "type": "CARTÃO DE CRÉDITO",
-    "card_holder": "Roberval", 
-    "card_number": 852741963, 
-    "card_expiration_date": "02/2028",
-    "card_cvv": 456
+    "amount": 1200,
+    "type": "BOLETO",
+    "card_holder": "Paloma", 
+    "card_number": 753159, 
+    "card_expiration_date": "fhhh",
+    "card_cvv": 8563
 }
 ###
 

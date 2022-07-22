@@ -1,3 +1,4 @@
+import { CustomError } from "../error/BaseCustomError";
 import CardModel from "../models/CardModel";
 import { BaseDatabase } from "./BaseDatabase";
 
@@ -10,7 +11,7 @@ export default class CardDatabase extends BaseDatabase{
             .insert(input)
             .into(this.TABLE_NAME)
         } catch (error: any) {
-            throw new Error(error.sqlmessage || error.message)
+            throw new CustomError(500, error.message || "Internal error.")
         }
     }
 
@@ -22,7 +23,7 @@ export default class CardDatabase extends BaseDatabase{
             .where({id})
             return result[0]
         } catch (error: any) {
-            throw new Error(error.sqlmessage || error.message)
+            throw new CustomError(500, error.message || "Internal error.")
         }
     }
 }

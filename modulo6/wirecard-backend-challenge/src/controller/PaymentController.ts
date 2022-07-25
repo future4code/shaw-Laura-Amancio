@@ -58,12 +58,9 @@ export default class PaymentController {
     public getPaymentById = async(req: Request, res: Response) => {
         try {
             const id = req.params.payment_id
-            const buyerId = req.params.buyer_id
-            const paymentResult = await this.paymentBusiness.getPaymentById(id, buyerId)
-            const buyerResult = await this.buyerBusiness.getById(buyerId)
+            const paymentResult = await this.paymentBusiness.getPaymentById(id)
             res.status(200).send({
-                paymentData: paymentResult,
-                buyerData: buyerResult
+                paymentData: paymentResult
             })
         } catch (error: any) {
             res.status(error.statusCode || 400).send({ message: error.message })

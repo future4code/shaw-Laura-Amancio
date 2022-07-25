@@ -54,6 +54,7 @@ export default class CardBusiness {
                 type,
                 status
             )
+            await this.paymentData.generatePayment(newPayment)
             throw new CustomError(400, "expired card")
         }
         

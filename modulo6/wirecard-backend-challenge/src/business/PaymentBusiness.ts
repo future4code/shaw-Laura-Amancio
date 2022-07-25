@@ -60,17 +60,15 @@ export default class PaymentBusiness {
         }
     }
 
-    public getPaymentById = async(id: string, buyerId: string) => {
+    public getPaymentById = async(id: string) => {
         try {
-            const validBuyer = await this.buyerData.getByID(buyerId)
-            if(!validBuyer){
-            throw new CustomError(404, "Buyer not found")
-            }
-
             const result = await this.paymentData.getPaymentById(id)
+            if(!result){
+                throw new CustomError(404, "Payment not found")
+            }
             return (result)
         } catch (error: any) {
-            throw new Error(error.message)
+            throw new CustomError(400, error.message)
         }
     }
 }

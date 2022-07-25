@@ -35,7 +35,7 @@ export default class PaymentModel {
     public getStatus() {
         return this.status;
     }
-    static toBuyerModel(payment: any): PaymentModel {
+    static todoBuyerModel(payment: any): PaymentModel {
         return new PaymentModel(payment.id, payment.client_id, payment.buyer_id, payment.amount, payment.type, payment.status)
     }
 }

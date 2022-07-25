@@ -18,7 +18,7 @@ export class BuyersModel {
     public getCpf() {
         return this.cpf;
     }
-    static toBuyerModel(buyer: any): BuyersModel {
+    public static todoBuyerModel(buyer: any): BuyersModel {
         return new BuyersModel(buyer.id, buyer.name, buyer.email, buyer.cpf);
     }
 }

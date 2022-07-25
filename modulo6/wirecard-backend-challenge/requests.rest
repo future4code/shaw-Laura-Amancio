@@ -2,26 +2,26 @@ POST http://localhost:3003/buyers
 Content-Type: application/json
 
 {
-    "name": "Rogério",
-    "email": "rogerio@gmail.com",
-    "cpf": 78945614587
+    "name": "Brenda",
+    "email": "brebre@gmail.com",
+    "cpf": 74136985678
 }
 ###
 POST http://localhost:3003/clients
 Content-Type: application/json
 ###
 
-POST http://localhost:3003/payment/c631ee49-04a4-465d-ae57-dda0024fa12d/0f6469af-2518-49ac-8e64-02b495423046
+POST http://localhost:3003/payment/c631ee49-04a4-465d-ae57-dda0024fa12d/5c079c1a-750e-4715-850f-85ccd54083cb
 Content-Type: application/json
 
 {
-    "amount": 1200,
-    "type": "BOLETO",
-    "card_holder": "Paloma", 
-    "card_number": 753159, 
-    "card_expiration_date": "fhhh",
-    "card_cvv": 8563
+    "amount": 300,
+    "type": "CARTÃO DE CRÉDITO",
+    "card_holder": "Brenda", 
+    "card_number": 7894582013654985, 
+    "card_expiration_date": "05/2028",
+    "card_cvv": 455
 }
 ###
 
-GET http://localhost:3003/payment/626ec7e2-b461-4261-9361-84cf5612d4e8/da4ad440-3043-4999-9ea6-ad49c0ae333d
+GET http://localhost:3003/payment/83c834a0-4a89-467c-b768-0dc5479134d7

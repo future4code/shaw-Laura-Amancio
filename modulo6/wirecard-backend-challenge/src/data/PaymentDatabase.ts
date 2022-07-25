@@ -17,9 +17,8 @@ export default class PaymentDatabase extends BaseDatabase {
 
     public async getPaymentById(id: string): Promise<PaymentModel> {
         try {
-
             const result = await this.getConnection()
-            .select()
+            .select("*")
             .from(this.TABLE_NAME)
             .where({id})
             return result[0]

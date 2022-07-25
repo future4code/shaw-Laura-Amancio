@@ -12,4 +12,15 @@ export class PaymentDataMock {
                 return undefined
         }
     }
+
+    public async generatePayment(input: PaymentModel) {
+        switch (input) {
+            case paymentMock1:
+                return "Boleto number: 789456123"
+            case paymentMock2:
+                return "Payment authorized"
+            default:
+                undefined
+        }
+    }
 }

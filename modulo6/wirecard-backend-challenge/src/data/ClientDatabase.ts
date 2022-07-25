@@ -4,10 +4,10 @@ import { BaseDatabase } from "./BaseDatabase";
 export default class ClientDatabase extends BaseDatabase{
     protected TABLE_NAME = "clients_wirecard"
 
-    public async addClient(input: string): Promise<void> {
+    public async addClient(id: string): Promise<void> {
         try {
             await this.getConnection()
-            .insert(input)
+            .insert({id})
             .into(this.TABLE_NAME)
         } catch (error: any) {
             throw new Error(error.sqlmessage || error.message)

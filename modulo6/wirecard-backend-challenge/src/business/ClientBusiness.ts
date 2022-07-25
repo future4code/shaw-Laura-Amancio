@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import ClientDatabase from "../data/ClientDatabase";
 import { IdGenerator } from "../services/IdGenerator";
 

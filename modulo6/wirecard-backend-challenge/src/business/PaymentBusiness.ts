@@ -16,7 +16,7 @@ export default class PaymentBusiness {
     public generatePayment = async(input: inputPaymentDTO) => {
         try {
             const {client_id, buyer_id, amount, type} = input
-            let {status} = input
+            let {status, boleto_number} = input
 
             const validClient = await this.clientData.getByID(client_id)
             if(!validClient){
@@ -29,17 +29,26 @@ export default class PaymentBusiness {
             }
 
             if(!client_id ||  !buyer_id || !amount || !type ){
-                throw new CustomError(422, "fill in all fields")
+                throw new CustomError(422, "Fill in all fields")
+            }
+            if(type !== paymentType.BOLETO && type !== paymentType.CARD) {
+                throw new CustomError(422, "Invalid type of transaction")
             }
 
             if(!status){
                 status = paymentStatus.A_PAGAR
             }
 
+
             if(type === paymentType.CARD){
                 status = paymentStatus.PAGO
+                boleto_number = null
             }
 
+            if(type === paymentType.BOLETO){
+                boleto_number = Date.now()
+            }
+            
             const id = this.idGenerator.generate()
 
             const newPayment = new PaymentModel(
@@ -48,7 +57,8 @@ export default class PaymentBusiness {
                 buyer_id,
                 amount,
                 type,
-                status
+                status,
+                boleto_number
             )
             
 

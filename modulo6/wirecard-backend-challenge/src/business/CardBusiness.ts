@@ -55,7 +55,7 @@ export default class CardBusiness {
                 status
             )
             await this.paymentData.generatePayment(newPayment)
-            throw new CustomError(400, "expired card")
+            throw new CustomError(400, "Expired card")
         }
         
         if(!validCards.includes(card_cvv)){

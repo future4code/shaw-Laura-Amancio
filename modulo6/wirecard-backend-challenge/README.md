@@ -26,7 +26,7 @@ Caso o cartão esteja com data expirada, o pagamento também é salvo no Banco d
 - No endpoint de ***Pegar pagamento pelo ID***, o usuário precisa me informar o ID do pagamento por params, retornando o valor, id de buyer e client, além do status do pagamento.
 
 ## :books: Documentação da API:
-- [Acesse completa aqui]()
+- [Acesse completa aqui!](https://documenter.getpostman.com/view/20352925/UzXLzJKd)
 
 ## :desktop_computer: Linguagens e Bibliotecas usadas:
 - Typescript;

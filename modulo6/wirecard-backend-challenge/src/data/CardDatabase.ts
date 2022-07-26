@@ -5,7 +5,7 @@ import { BaseDatabase } from "./BaseDatabase";
 export default class CardDatabase extends BaseDatabase{
     protected TABLE_NAME = "card_wirecard"
 
-    public async addCard(input: any) {
+    public async addCard(input: CardModel) {
         try {
             await this.getConnection()
             .insert(input)

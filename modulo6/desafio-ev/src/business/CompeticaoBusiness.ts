@@ -10,43 +10,48 @@ export class CompeticaoBusiness {
 
   public async criarCompeticao(input: inputCompeticaoDTO) {
     try {
-        const { name } = input;
-    let { status } = input;
+      const { name } = input;
+      let { status } = input;
 
-    if (!name) {
-      throw new Error("Preencha o campo");
-    }
-    if (
-      name !== competicaoName.DARDO1 &&
-      name !== competicaoName.DARDO2 &&
-      name !== competicaoName.DARDOFINAL &&
-      name !== competicaoName.DARDOQUARTA &&
-      name !== competicaoName.DARDOSEMI &&
-      name !== competicaoName.RASO2 &&
-      name !== competicaoName.RASOS1 &&
-      name !== competicaoName.RASOQUARTA &&
-      name !== competicaoName.RASOSEMI &&
-      name !== competicaoName.RASOFINAL
-    ) {
-      throw new Error("Competição não existe ou não é permitida");
-    }
+      if (!name) {
+        throw new Error("Preencha o campo");
+      }
+      if (
+        name !== competicaoName.DARDO1 &&
+        name !== competicaoName.DARDO2 &&
+        name !== competicaoName.DARDOFINAL &&
+        name !== competicaoName.DARDOQUARTA &&
+        name !== competicaoName.DARDOSEMI &&
+        name !== competicaoName.RASO2 &&
+        name !== competicaoName.RASOS1 &&
+        name !== competicaoName.RASOQUARTA &&
+        name !== competicaoName.RASOSEMI &&
+        name !== competicaoName.RASOFINAL
+      ) {
+        throw new Error("Competição não existe ou não é permitida");
+      }
+      
+      const registrado = await this.competicaoData.acharPorNome(name)
+      if(registrado){
+        throw new Error("Competição já registrada")
+      }
 
-    if(!status){
-        status = competicaoStatus.AGUARDANDO
-    }
+      if(!status){
+          status = competicaoStatus.AGUARDANDO
+      }
 
-    const id = this.idGenerator.generate()
+      const id = this.idGenerator.generate()
 
-    const novaCompeticao = new CompeticaoModel(
-        id,
-        name,
-        status
-    )
+      const novaCompeticao = new CompeticaoModel(
+          id,
+          name,
+          status
+      )
 
-    await this.competicaoData.criarCompeticao(novaCompeticao)
-  
-    } catch (error: any) {
-        throw new Error(error.message)
-    }
+      await this.competicaoData.criarCompeticao(novaCompeticao)
+    
+      } catch (error: any) {
+          throw new Error(error.message)
+      }
   }
 }

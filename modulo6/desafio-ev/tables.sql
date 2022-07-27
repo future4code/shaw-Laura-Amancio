@@ -13,4 +13,4 @@ CREATE TABLE resultados(
     unidade ENUM ("s", "m") NOT NULL
 );
 
-DROP TABLE resultados;
+SELECT * FROM competicao;

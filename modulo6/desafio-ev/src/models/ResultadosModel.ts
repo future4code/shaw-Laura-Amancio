@@ -28,3 +28,10 @@ export class ResultadosModel {
         return new ResultadosModel(resultado.competicao_id, resultado.atleta, resultado.value, resultado.unidade)
     }
 }
+
+export interface inputResultadoDTO{
+    competicao_id: string,
+    atleta: string,
+    value: number,
+    unidade?: resultadoUnidade
+}

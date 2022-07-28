@@ -7,3 +7,4 @@ const resultadoController = new ResultadoController()
 
 app.post("/competicao", competicaoController.criarCompeticao)
 app.post("/resultados/:competicao_id", resultadoController.addResultado)
+app.put("/competicao/:id", competicaoController.mudarStatus)

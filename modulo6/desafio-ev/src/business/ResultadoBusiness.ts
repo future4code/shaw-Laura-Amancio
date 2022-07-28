@@ -1,3 +1,4 @@
+import { CompeticaoModel } from "./../models/CompeticaoModel";
 import { ResultadosModel } from "./../models/ResultadosModel";
 import CompeticaoDatabase from "../data/CompeticaoDatabase";
 import ResultadoDatabase from "../data/ResultadoDatabase";
@@ -22,14 +23,14 @@ export class ResultadoBusiness {
       if (!competicao) {
         throw new Error("Competição não encontrada");
       }
+
       if (
-        competicao.getName() ===
-        (competicaoName.DARDO1 ||
-          competicaoName.DARDO2 ||
-          competicaoName.DARDOFINAL ||
-          competicaoName.DARDOQUARTA ||
-          competicaoName.DARDOSEMI)
-      ) {
+        competicao.getName() === competicaoName.DARDO1 ||
+        competicao.getName() === competicaoName.DARDO2 ||
+        competicao.getName() === competicaoName.DARDOFINAL ||
+        competicao.getName() === competicaoName.DARDOQUARTA ||
+        competicao.getName() === competicaoName.DARDOSEMI )
+      {
         unidade = resultadoUnidade.M;
       } else {
         unidade = resultadoUnidade.S;
@@ -40,14 +41,13 @@ export class ResultadoBusiness {
       }
       const acharAtleta = await this.resultadoDatabase.acharAtleta(atleta);
       if (
-        competicao.getName() ===
-          (competicaoName.DARDO1 ||
-            competicaoName.DARDO2 ||
-            competicaoName.DARDOFINAL ||
-            competicaoName.DARDOQUARTA ||
-            competicaoName.DARDOSEMI) &&
+        (competicao.getName() === competicaoName.DARDO1 ||
+        competicao.getName() === competicaoName.DARDO2 ||
+        competicao.getName() === competicaoName.DARDOFINAL ||
+        competicao.getName() === competicaoName.DARDOQUARTA ||
+        competicao.getName() === competicaoName.DARDOSEMI ) &&
         acharAtleta.length === 3
-      ) {
+      ){
         throw new Error("Atleta já registrado 3x");
       }
       if (

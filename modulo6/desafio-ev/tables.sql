@@ -8,9 +8,17 @@ CREATE TABLE competicao(
 CREATE TABLE resultados(
     competicao_id VARCHAR(255) NOT NULL,
     FOREIGN KEY (competicao_id) REFERENCES competicao(id),
-    atleta VARCHAR(255) NOT NULL UNIQUE,
+    atleta VARCHAR(255) NOT NULL,
     value FLOAT NOT NULL,
     unidade ENUM ("s", "m") NOT NULL
 );
 
+
 SELECT * FROM competicao;
+SELECT * FROM resultados;
+SELECT MAX(value) FROM resultados
+WHERE atleta = "Roberto"
+UNION
+SELECT * FROM resultados
+WHERE competicao_id = "0550c2c0-46e0-4ef3-9941-350cc7c01d4f"
+ORDER BY value DESC;

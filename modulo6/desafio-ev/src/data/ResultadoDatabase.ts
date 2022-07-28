@@ -19,7 +19,21 @@ export default class ResultadoDatabase extends BaseDatabase{
             const resultado: ResultadosModel[] = await this.getConnection()
             .select()
             .where({atleta})
+            .from(this.TABLE_NAME)
             return resultado
+        } catch (error: any) {
+            throw new Error(error.sqlmessage || error.message)
+        }
+    }
+
+    public async pegarResultado100m(id: string): Promise<ResultadosModel> {
+        try {
+            const resultado: ResultadosModel[] = await this.getConnection()
+            .select("*")
+            .from(this.TABLE_NAME)
+            .where({id})
+            .orderBy("value", "desc")
+            return resultado[0]
         } catch (error: any) {
             throw new Error(error.sqlmessage || error.message)
         }

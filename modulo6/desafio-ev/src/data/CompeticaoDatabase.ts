@@ -1,3 +1,4 @@
+import { competicaoStatus } from "./../models/CompeticaoModel";
 import { CompeticaoModel, competicaoName } from "../models/CompeticaoModel"
 import { BaseDatabase } from "./BaseDatabase"
 
@@ -26,13 +27,24 @@ export default class CompeticaoDatabase extends BaseDatabase {
         }
     }
 
-    public async acharPorId(id: string): Promise<CompeticaoModel |undefined>{
+    public async acharPorId(id: string): Promise<CompeticaoModel>{
         try {
             const result: CompeticaoModel[] = await this.getConnection()
             .select()
             .from(this.TABLE_NAME)
             .where({id})
-            return result[0]
+            return result[0] && CompeticaoModel.todoCompeticao(result[0])
+        } catch (error: any) {
+            throw new Error(error.sqlmessage || error.message)
+        }
+    }
+
+    public async mudarStatus(id: string, status: competicaoStatus): Promise<void> {
+        try {
+            await this.getConnection()
+            .update({status})
+            .from(this.TABLE_NAME)
+            .where({id})
         } catch (error: any) {
             throw new Error(error.sqlmessage || error.message)
         }

@@ -34,7 +34,7 @@ export class CompeticaoModel {
         return this.status
     }
 
-    static todoCompeticao(competicao: any): CompeticaoModel {
+    public static todoCompeticao(competicao: any) {
         return new CompeticaoModel(competicao.id, competicao.name, competicao.status)
     }
 }

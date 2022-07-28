@@ -54,4 +54,21 @@ export class CompeticaoBusiness {
           throw new Error(error.message)
       }
   }
+
+  public async mudarStatus(id: string, input: competicaoStatus) {
+    try {
+
+      const competicao = await this.competicaoData.acharPorId(id)
+      if(!competicao){
+        throw new Error("Competição não encontrada")
+      }
+      if(input !== competicaoStatus.ACONTECENDO && input !== competicaoStatus.AGUARDANDO &&  input !== competicaoStatus.FINALIZADA) {
+        throw new Error("Formato de status inválido")
+      }
+
+      await this.competicaoData.mudarStatus(id, input)
+    } catch (error: any) {
+      throw new Error(error.message)
+    }
+  }
 }

@@ -2,5 +2,20 @@ POST http://localhost:3003/competicao
 Content-Type: application/json
 
 {
-    "name": "100m Classificatória1"
+    "name": "Dardo classificatória1"
+}
+###
+POST http://localhost:3003/resultados/0550c2c0-46e0-4ef3-9941-350cc7c01d4f
+Content-Type: application/json
+
+{
+    "atleta": "Carlos",
+    "value": 13.13
+}
+###
+PUT http://localhost:3003/competicao/0550c2c0-46e0-4ef3-9941-350cc7c01d4f
+Content-Type: application/json
+
+{
+    "status": "ACONTECENDO AGORA"
 }

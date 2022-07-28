@@ -20,4 +20,15 @@ export default class CompeticaoController {
             res.status(error.statusCode || 400).send({message: error.message})
         }
     }
+
+    public mudarStatus = async(req: Request, res: Response) => {
+        try {
+            const {status} = req.body
+            const id = req.params.id
+            await this.competicaoBusiness.mudarStatus(id, status)
+            res.status(200).send({message: `Status da competição alterado para ${status}`})
+        } catch (error: any) {
+            res.status(error.statusCode || 400).send({message: error.message})
+        }
+    } 
 }

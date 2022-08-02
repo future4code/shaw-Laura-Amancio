@@ -18,7 +18,8 @@ CREATE TABLE payment_wirecard(
     FOREIGN KEY (buyer_id) REFERENCES buyers_wirecard(id),
     amount FLOAT NOT NULL,
     type ENUM("CARTÃO DE CRÉDITO", "BOLETO") NOT NULL,
-    status ENUM ("A PAGAR", "PAGO") NOT NULL DEFAULT "A PAGAR"
+    status ENUM ("A PAGAR", "PAGO") NOT NULL DEFAULT "A PAGAR",
+    boleto_number BIGINT UNIQUE
 );
 
 CREATE TABLE card_wirecard(
@@ -35,6 +36,3 @@ SELECT * FROM payment_wirecard;
 SELECT * FROM clients_wirecard;
 SELECT * FROM buyers_wirecard;
 SELECT * FROM card_wirecard;
-
-INSERT INTO clients_wirecard
-VALUES ("b624c8c8-5531-42b8-9e73-38ce538f7383");

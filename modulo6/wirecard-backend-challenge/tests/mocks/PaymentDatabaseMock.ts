@@ -12,4 +12,8 @@ export class PaymentDataMock {
                 return undefined
         }
     }
+
+    public async generatePayment(input: PaymentModel): Promise<void> {
+       
+    }
 }

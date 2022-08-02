@@ -16,7 +16,7 @@ export default class PaymentController {
         try {
             const client_id = req.params.client_id
             const buyer_id = req.params.buyer_id
-            const {amount, type, status, card_holder, card_number, card_expiration_date, card_cvv} = req.body
+            const {amount, type, status, card_holder, card_number, card_expiration_date, card_cvv, boleto_number} = req.body
             
             if(type === paymentType.CARD){
                 const inputCard: inputCardDTO = {
@@ -43,11 +43,11 @@ export default class PaymentController {
                     buyer_id,
                     type,
                     amount,
-                    status
+                    status,
+                    boleto_number
                 }
-                await this.paymentBusiness.generatePayment(inputBoleto)
-                const boletoNumber = Date.now()
-                res.status(201).send({message: `Boleto number: ${boletoNumber}`})
+                const result = await this.paymentBusiness.generatePayment(inputBoleto)
+                res.status(201).send({message: `Boleto number: ${result.getBoletoNumber()}`})
             }
 
         } catch (error: any) {
@@ -58,12 +58,9 @@ export default class PaymentController {
     public getPaymentById = async(req: Request, res: Response) => {
         try {
             const id = req.params.payment_id
-            const buyerId = req.params.buyer_id
-            const paymentResult = await this.paymentBusiness.getPaymentById(id, buyerId)
-            const buyerResult = await this.buyerBusiness.getById(buyerId)
+            const paymentResult = await this.paymentBusiness.getPaymentById(id)
             res.status(200).send({
-                paymentData: paymentResult,
-                buyerData: buyerResult
+                Data: paymentResult
             })
         } catch (error: any) {
             res.status(error.statusCode || 400).send({ message: error.message })

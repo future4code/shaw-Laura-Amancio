@@ -7,7 +7,8 @@ export const paymentMock1 = new PaymentModel(
     "buyer_mock",
     345,
     paymentType.BOLETO,
-    paymentStatus.A_PAGAR
+    paymentStatus.A_PAGAR,
+    789456123
 )
 export const paymentMock2 = new PaymentModel(
     "id_mock2",

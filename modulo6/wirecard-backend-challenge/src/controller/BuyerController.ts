@@ -18,7 +18,7 @@ export default class BuyerController {
             }
 
             await this.buyerBusiness.addBuyer(input)
-            res.status(201).send({ message: "Usuário cadastrado com sucesso" })
+            res.status(201).send({ message: "Buyer registered" })
         } catch (error: any) {
             res.status(error.statusCode || 400).send({ message: error.message }) 
         }

@@ -14,7 +14,8 @@ export default class PaymentModel {
         private buyer_id: string,
         private amount: number,
         private type: paymentType,
-        private status: paymentStatus
+        private status: paymentStatus,
+        private boleto_number?: number | undefined | null
     ){}
 
     public getId() {
@@ -35,8 +36,11 @@ export default class PaymentModel {
     public getStatus() {
         return this.status;
     }
-    static toBuyerModel(payment: any): PaymentModel {
-        return new PaymentModel(payment.id, payment.client_id, payment.buyer_id, payment.amount, payment.type, payment.status)
+    public getBoletoNumber() {
+        return this.boleto_number;
+    }
+    static todoBuyerModel(payment: any): PaymentModel {
+        return new PaymentModel(payment.id, payment.client_id, payment.buyer_id, payment.amount, payment.type, payment.status, payment.boleto_number)
     }
 }
 
@@ -47,4 +51,5 @@ export interface inputPaymentDTO {
     amount: number,
     type: paymentType,
     status: paymentStatus,
+    boleto_number?: number | null
 }

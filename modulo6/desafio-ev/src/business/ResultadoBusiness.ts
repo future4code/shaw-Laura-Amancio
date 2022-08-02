@@ -74,4 +74,39 @@ export class ResultadoBusiness {
       throw new Error(error.message);
     }
   }
+
+  public async getResultado100m(id: string) {
+    try {
+      if(!id){
+        throw new Error("Id da competição não informado")
+      }
+      
+      const resultado = await this.resultadoDatabase.pegarResultado100m(id)
+      if(resultado.length === 0){
+        throw new Error("Competição não encontrada")
+      }
+      if(resultado[0].getUnidade() != resultadoUnidade.S){
+        throw new Error("Competição não compatível com a requisição")
+      }
+
+      return resultado
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
+  }
+
+  public async getResultadoDardo(id: string) {
+    try {
+      const resultado = await this.resultadoDatabase.pegarResultadoDardo(id)
+      const newResultado = []
+
+      // for(let atleta of arr)
+
+
+      // return resultado
+
+    } catch (error: any) {
+      throw new Error(error.message)
+    }
+  }
 }

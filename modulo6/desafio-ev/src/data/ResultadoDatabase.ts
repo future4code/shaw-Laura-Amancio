@@ -26,14 +26,26 @@ export default class ResultadoDatabase extends BaseDatabase{
         }
     }
 
-    public async pegarResultado100m(id: string): Promise<ResultadosModel> {
+    public async pegarResultado100m(id: string): Promise<ResultadosModel[]> {
         try {
             const resultado: ResultadosModel[] = await this.getConnection()
             .select("*")
             .from(this.TABLE_NAME)
-            .where({id})
+            .where({competicao_id: id})
+            .orderBy("value", "asc")
+            return resultado.map((result) => ResultadosModel.todoResultadoModel(result))
+        } catch (error: any) {
+            throw new Error(error.sqlmessage || error.message)
+        }
+    }
+    public async pegarResultadoDardo(id: string): Promise<ResultadosModel[]> {
+        try {
+            const resultado: ResultadosModel[] = await this.getConnection()
+            .select("*")
+            .from(this.TABLE_NAME)
+            .where({competicao_id: id})
             .orderBy("value", "desc")
-            return resultado[0]
+            return resultado.map((result) => ResultadosModel.todoResultadoModel(result))
         } catch (error: any) {
             throw new Error(error.sqlmessage || error.message)
         }

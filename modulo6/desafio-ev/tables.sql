@@ -16,9 +16,8 @@ CREATE TABLE resultados(
 
 SELECT * FROM competicao;
 SELECT * FROM resultados;
-SELECT MAX(value) FROM resultados
-WHERE atleta = "Roberto"
-UNION
-SELECT * FROM resultados
-WHERE competicao_id = "0550c2c0-46e0-4ef3-9941-350cc7c01d4f"
-ORDER BY value DESC;
+SELECT atleta, value FROM resultados
+ORDER BY value;
+
+
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))

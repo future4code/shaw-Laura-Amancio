@@ -1,0 +1,26 @@
+POST http://localhost:3003/competicao
+Content-Type: application/json
+
+{
+    "name": "Dardo classificatória1"
+}
+###
+POST http://localhost:3003/resultados/b4dd8913-e87a-4b12-9cf7-87d163f67f38
+Content-Type: application/json
+
+{
+    "atleta": "Joana",
+    "value": 10.98
+}
+###
+PUT http://localhost:3003/competicao/b4dd8913-e87a-4b12-9cf7-87d163f67f38
+Content-Type: application/json
+
+{
+    "status": "FINALIZADA"
+}
+###
+GET http://localhost:3003/resultados/b4dd8913-e87a-4b12-9cf7-87d163f67f38
+
+###
+GET http://localhost:3003/resultado/0550c2c0-46e0-4ef3-9941-350cc7c01d4f

@@ -1,0 +1,59 @@
+### SIGN UP
+POST https://lauraamancio-signo.herokuapp.com/users/signup
+Content-Type: application/json
+
+{
+    "nickname": "vilma", 
+    "password": "1234567"
+}
+### LOGIN
+POST https://lauraamancio-signo.herokuapp.com/users/login
+Content-Type: application/json
+
+{
+    "nickname": "lauraamancio", 
+    "password": "1234567"
+}
+### CREATE POLL
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMjQ3ODg5LTcxMDctNDM2YS1iNWIxLTM0MTYzYzM1ZGQwOSIsImlhdCI6MTY1OTk3MDQxMX0.gdNSqxJboOubL94rrpSczShnThLWIzaM6AIjkOrI7UA
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNhMjg4ZWY2LTAyNWQtNDQ3ZC1hMzVmLTcwNjU1ZTUzZTU0MSIsImlhdCI6MTY1OTk2OTgwMX0.rhgP5zx8AxG0z4xB61iws5bDvp6A0GBUuL_QwRoyFnw
+POST https://lauraamancio-signo.herokuapp.com/polls
+Content-Type: application/json
+authorization: {{token}}
+
+{
+    "title": "teste", 
+    "start_date": "16/08/2022",
+    "end_date": "16/08/2022"
+}
+### ANSWER POLL
+POST https://lauraamancio-signo.herokuapp.com/polls/26ef23ac-ab8c-4c6f-8693-2a2af87093ad
+Content-Type: application/json
+authorization: {{token}}
+
+{
+    "answer": "CONCORDO PARCIALMENTE"
+}
+### EDIT POLL
+PUT https://lauraamancio-signo.herokuapp.com/polls/2356ed56-0187-4185-9a82-a16bbdbd0d4f
+Content-Type: application/json
+authorization: {{token}}
+
+{
+    "start_date": "09/08/2022"
+}
+### DELETE POLL
+DELETE  https://lauraamancio-signo.herokuapp.com/poll/72a2199c-f7c4-4eaf-9d86-3ac5a60a3746
+authorization: {{tokenAdmin}}
+
+### GET ALL POLLS
+GET https://lauraamancio-signo.herokuapp.com/polls
+authorization: {{token}}
+
+### GET VOTES
+GET https://lauraamancio-signo.herokuapp.com/polls/votes/7866d555-73ed-453e-be1b-748327f6e63f
+authorization: {{token}}
+
+### GET POLL BY ID
+GET https://lauraamancio-signo.herokuapp.com/polls/eb3d83ed-f8b5-4e3f-a911-1e64eca59197
+authorization: {{token}}

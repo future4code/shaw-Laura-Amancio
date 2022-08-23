@@ -1,0 +1,1 @@
+export const userAdmin = ["lauraamancio", "laura", "signo", "signo_web"]
